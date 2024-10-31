@@ -303,7 +303,7 @@
                 display: block;
                 margin-bottom: 8px;
                 font-size: 14px;
-                font-family: 'Roboto';
+                font-family: var(--font-roboto);
                 text-align: right;
                 transform: translateX(82px);
                 @include mq(xs) {
@@ -341,7 +341,7 @@
                             color: #4D5765;
                             display: inline-block;
                             font-weight: 500;
-                            font-family: 'Roboto';
+                            font-family: var(--font-roboto);
                             padding: 0 55px;
                             &.active {
                                 color: #FF785A;
@@ -428,7 +428,7 @@
                 color: var(--clr-theme-5);
                 text-transform: uppercase;
                 line-height: 1;
-                font-family: Space Grotesk;
+                font-family: var(--font-space-grotesk);
                 display: block;
                 transition: all .3s;
                 margin-bottom: 12px;
@@ -439,12 +439,12 @@
                 font-weight: 700;
                 color: var(--clr-body-heading);
                 margin-bottom: 23px;
-                font-family: Space Grotesk;
+                font-family: var(--font-space-grotesk);
                 transition: all .3s;
             }
             &-desc-2 {
                 font-size: 15px;
-                font-family: 'Roboto';
+                font-family: var(--font-roboto);
                 color: #4D5765;
                 line-height: 20px;
                 transition: all .3s;
@@ -461,7 +461,7 @@
                 position: relative;
                 overflow: hidden;
                 font-weight: 500;
-                font-family: 'Roboto';
+                font-family: var(--font-roboto);
                 color: #201B59;
                 &::before {
                     background-color: var(--clr-common-white);
@@ -499,14 +499,14 @@
             &-price-2 {
                 font-size: 40px;
                 font-weight: 700;
-                font-family: Space Grotesk;
+                font-family: var(--font-space-grotesk);
                 color: var(--clr-body-heading);
                 margin-bottom: 3px;
             }
             &-subtitle-2 {
                 font-size: 18px;
                 color: #4D5765;
-                font-family: Space Grotesk;
+                font-family: var(--font-space-grotesk);
             }
             &-list-2 {
                 ul {
@@ -529,7 +529,7 @@
                             font-weight: 500;
                         }
                         span {
-                            font-family: 'Roboto';
+                            font-family: var(--font-roboto);
                             font-size: 15px;
                             color: #4D5765;
                         }

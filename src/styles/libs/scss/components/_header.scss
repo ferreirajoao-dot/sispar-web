@@ -145,7 +145,7 @@
           }
         a {
             font-size: 16px;
-            font-family: 'Roboto', sans-serif;
+            font-family: var(--font-roboto);
             padding: 25px 0;
             color: var(--clr-common-white);
             &::after {
@@ -165,7 +165,7 @@
         font-weight: 500;
         color: var(--clr-common-white);
         text-decoration: none;
-        font-family: Space Grotesk;
+        font-family: var(--font-space-grotesk);
     }
 }
 .header-transparent {

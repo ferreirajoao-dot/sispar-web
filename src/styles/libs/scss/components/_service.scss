@@ -1067,7 +1067,7 @@
             font-size: 24px;
             font-weight: 700;
             color: var(--clr-body-heading);
-            font-family: Space Grotesk;
+            font-family: var(--font-space-grotesk);
             margin-bottom: 14px;
             &:hover {
                 color: var(--clr-theme-5);
@@ -1078,7 +1078,7 @@
         color: var(--clr-body-heading);
         font-weight: 500;
         font-size: 15px;
-        font-family: 'Roboto', sans-serif;
+        font-family: var(--font-roboto);
         &:hover {
             color: var(--clr-theme-5);
         }
@@ -1354,11 +1354,11 @@
         font-weight: 700;
         color: var(--clr-body-heading);
         margin-bottom: 5px;
-        font-family: Space Grotesk;
+        font-family: var(--font-space-grotesk);
     }
     .sasup-feature-content-desc-2 {
         font-size: 16px;
-        font-family: 'Roboto';
+        font-family: var(--font-roboto);
         color: #4D5765;
         margin-bottom: 27px;
     }
@@ -1478,7 +1478,7 @@
                 font-size: 34px;
                 font-weight: 700;
                 margin-bottom: 8px;
-                font-family: Space Grotesk;
+                font-family: var(--font-space-grotesk);
                 @include mq(sm) {
                     font-size: 26px;
                 }
@@ -1489,7 +1489,7 @@
             &-desc-1 {
                 font-size: 16px;
                 color: #4D5765;
-                font-family: 'Roboto';
+                font-family: var(--font-roboto);
                 margin-bottom: 30px;
             }
         }
@@ -1520,12 +1520,12 @@
         font-weight: 700;
         font-size: 22px;
         color: var(--clr-body-heading);
-        font-family: Space Grotesk;
+        font-family: var(--font-space-grotesk);
         margin-bottom: 10px;
     }
     &-single-list-item-desc-1 {
         font-size: 15px;
-        font-family: 'Roboto';
+        font-family: var(--font-roboto);
         line-height: 22px;
         color: #4D5765;
         margin-bottom: 0;
@@ -1696,7 +1696,7 @@
                         color: var(--clr-body-heading);
                         transition: all .3s;
                         font-weight: 500;
-                        font-family: Space Grotesk;
+                        font-family: var(--font-space-grotesk);
                     }
                     &.arrow {
                         float: right;

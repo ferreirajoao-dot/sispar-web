@@ -30,16 +30,6 @@ const spaceGrotesk = Space_Grotesk({
   display: 'swap',
 })
 
-// const geistSans = localFont({
-//   src: "../assets/fonts/GeistVF.woff",
-//   variable: "--font-geist-sans",
-//   weight: "100 900",
-// });
-// const geistMono = localFont({
-//   src: "../assets/fonts/GeistMonoVF.woff",
-//   variable: "--font-geist-mono",
-//   weight: "100 900",
-// });
 
 export const viewport = {
   width: 'device-width',

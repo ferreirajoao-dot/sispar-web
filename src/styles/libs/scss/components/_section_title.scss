@@ -275,7 +275,7 @@
         font-size: 15px;
         font-weight: 700;
         color: var(--clr-theme-5);
-        font-family: Space Grotesk;
+        font-family: var(--font-space-grotesk);
         display: block;
         margin-bottom: 7px;
     }
@@ -283,7 +283,7 @@
         font-size: 46px;
         color: var(--clr-body-heading);
         font-weight: 700;
-        font-family: Space Grotesk;
+        font-family: var(--font-space-grotesk);
         line-height: 1.19;
         @include mq(md) {
             font-size: 35px;

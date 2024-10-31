@@ -1,7 +1,7 @@
 // Font Family 
-$poppins: 'Poppins', sans-serif;
-$roboto: 'Roboto', sans-serif;
-$space: "'Space Grotesk', sans-serif";
+$poppins: var(--font-poppins), sans-serif;
+$roboto: var(--font-roboto), sans-serif;
+$space: var(--font-space-grotesk), sans-serif;
 
 // Colors ---------------
 $white: #ffffff;

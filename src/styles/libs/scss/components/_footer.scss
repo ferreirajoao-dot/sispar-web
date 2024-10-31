@@ -254,7 +254,7 @@
                         margin-bottom: 10px;
                         & a {
                             display: block;
-                            font-family: 'Roboto';
+                            font-family: var(--font-roboto);
                             font-weight: 400;
                             text-decoration: none;
                             font-size: 16px;
@@ -442,7 +442,7 @@
 .sasup-widget-5 p {
 	line-height: 24px;
 	color: #4D5765;
-	font-family: 'Roboto';
+	font-family: var(--font-roboto);
 	margin-bottom: 27px;
 }
 .sasup-subscribe-form-4 {
@@ -461,7 +461,7 @@
 	height: 50px;
 	font-size: 14px;
 	color: #818790;
-	font-family: 'Roboto';
+	font-family: var(--font-roboto);
 }
 .sasup-subscribe-theme-btn-4 {
 	border: 0;
@@ -473,7 +473,7 @@
 	color: var(--clr-common-white);
 	font-size: 15px;
 	font-weight: 500;
-	font-family: 'Roboto';
+	font-family: var(--font-roboto);
 }
 .sasup-subscribe-theme-btn-4:hover {
 	background-color: #FF7E62;
@@ -483,7 +483,7 @@
 	font-weight: 700;
 	color: var(--clr-body-heading);
 	margin-bottom: 31px;
-	font-family: Space Grotesk;
+	font-family: var(--font-space-grotesk);
 }
 .sasup-footer-col-4-2.sasup-widget-5 ul li {
 	width: 50%;
@@ -496,7 +496,7 @@
 .sasup-widget-5 ul li a {
 	color: #4D5765;
 	font-size: 16px;
-	font-family: 'Roboto';
+	font-family: var(--font-roboto);
 	display: inline-block;
 }
 .menu-solutions-container ul li {
@@ -527,14 +527,14 @@
     }
     .list-label {
         color: var(--clr-body-heading);
-        font-family: 'Roboto';
+        font-family: var(--font-roboto);
         font-weight: 500;
         font-size: 15px;
         margin-bottom: 0;
     }
     .list-value {
         font-size: 15px;
-        font-family: 'Roboto';
+        font-family: var(--font-roboto);
         color: #4D5765;
         margin-bottom: 0;
     }
@@ -543,7 +543,7 @@
 	padding-top: 20px;
     p {
         font-size: 14px;
-        font-family: 'Roboto';
+        font-family: var(--font-roboto);
         color: #94999E;
         margin-bottom: 0;
     }
@@ -552,7 +552,7 @@
     .label {
         color: var(--clr-body-heading);
         font-size: 16px;
-        font-family: Space Grotesk;
+        font-family: var(--font-space-grotesk);
         display: inline-block;
     }
     .footer-links {

@@ -378,7 +378,7 @@
     color: var(--clr-common-white);
     padding: 0 47px;
     font-size: 15px;
-    font-family: 'Roboto';
+    font-family: var(--font-roboto);
     &:hover {
         background-color: #FF7D61;
         color: var(--clr-common-white);
@@ -421,7 +421,7 @@
     background: var(--clr-common-white);
     font-size: 15px;
     font-weight: 500;
-    font-family: Space Grotesk;
+    font-family: var(--font-space-grotesk);
     color: var(--clr-body-heading);
     padding: 0 0;
     position: relative;

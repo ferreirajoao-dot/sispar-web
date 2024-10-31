@@ -444,7 +444,7 @@
     &-box-content-dsec p {
         font-size: 16px;
         line-height: 26px;
-        font-family: 'Roboto';
+        font-family: var(--font-roboto);
         color: #4D5765;
         margin-bottom: 32px;
     }
@@ -455,11 +455,11 @@
         font-weight: 700;
         color: var(--clr-body-heading);
         margin-bottom: 0;
-        font-family: Space Grotesk;
+        font-family: var(--font-space-grotesk);
     }
     &-designation-4 {
         font-size: 14px;
-        font-family: 'Roboto';
+        font-family: var(--font-roboto);
         color: #4D5765;
         margin-bottom: 0;
     }

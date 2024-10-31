@@ -196,7 +196,7 @@
         font-size: 54px;
         font-weight: 700;
         color: var(--clr-common-white);
-        font-family: Space Grotesk;
+        font-family: var(--font-space-grotesk);
         margin-bottom: 36px;
         @include mq(sm) {
             font-size: 50px;
@@ -239,7 +239,7 @@
         display: inline-block;
         height: 50px;
         line-height: 50px;
-        font-family: 'Roboto';
+        font-family: var(--font-roboto);
         font-size: 15px;
         font-weight: 500;
         color: var(--clr-body-heading);
@@ -267,7 +267,7 @@
         height: 50px;
         line-height: 45px;
         font-size: 15px;
-        font-family: 'Roboto';
+        font-family: var(--font-roboto);
         position: relative;
         overflow: hidden;
         font-weight: 500;
