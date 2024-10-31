@@ -31,12 +31,14 @@ const Header = () => {
                         <div className="row align-items-center justify-content-between">
                             <div className="col-xxl-3 col-xl-3 col-lg-3 col-md-4 col-6">
                                 <div className="sasup-logo mr-35 d-inline-block">
-                                    <a href="index.html" className="logo-1">
-                                        <Image src="" alt="image not found"/>
-                                    </a>
-                                    <a href="index.html" className="logo-2">
-                                        <Image src="" alt="image not found"/>
-                                    </a>
+                                    <Link href="#" className="logo-1">
+                                        <h3 className={"mb-0 text-white"}>SISPAR</h3>
+                                        {/*<Image src="" alt="image not found"/>*/}
+                                    </Link>
+                                    <Link href="#" className="logo-2">
+                                        <h3 className={"mb-0"}>SISPAR</h3>
+                                        {/*<Image src="" alt="image not found"/>*/}
+                                    </Link>
                                 </div>
                             </div>
                             <div className="col-xxl-6 col-xl-6 col-lg-6 d-none d-lg-block text-center">
