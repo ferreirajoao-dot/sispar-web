@@ -1,0 +1,164 @@
+/*
+--------------------------------------------
+18.creative_task
+*/
+@use '../abstracts/mixins' as *;
+.creative-task-sm-info {
+    font-size: 16px;
+    color: #ffffff;
+    opacity: .7;
+    line-height: 1.2;
+    margin-bottom: 0;
+    @include mq(xs) {
+        line-height: 1.5;
+    }
+}
+.creative-task {
+    &-tab {
+        &-controls {
+            & button {
+                height: 36px;
+                background: transparent;
+                color: #fff;
+                border: 2px solid #222d53;
+                padding: 0 18px;
+                margin-left: 10px;
+                @include transition(.3s);
+                font-size: 14px;
+                border-radius: 4px;
+                @include mq(lg) {padding: 0 6px;}
+                @include mq(sm) {padding: 0 16px;margin-left: auto;margin-right: 10px;}
+                @include mq(xs) {margin-left: auto;margin-right: 6px;padding: 0 5px;margin-bottom: 10px;}
+                &.active {
+                    background-color: var(--clr-theme-1);
+                    border-color: transparent;
+                }
+                & i {
+                    font-size: 11px;
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin-right: 9px;
+                    @include mq(md) {
+                        margin-right: 9px;
+                    }
+                    @include mq(xs) {
+                        margin-right: 8px;
+                    }
+                }
+                &:hover {
+                    background-color: var(--clr-theme-1);
+                    color: #fff;
+                    border-color: transparent;
+                }
+            }
+        }
+    }
+    &-dashbord {
+        &-wrap {
+            padding: 70px;
+            @include mq(lg) {
+                padding: 50px 40px;
+            }
+            @include mq(sm) {
+                padding: 40px;
+            }
+            @include mq(xs) {
+                padding: 25px;
+            }
+            & .icon {
+                margin-bottom: 34px;
+            }
+            & .content {
+                padding-bottom: 26px;
+            }
+        }
+    }
+    &-title {
+        font-weight: 600;
+        color: #fff;
+        display: block;
+        margin-bottom: 11px;
+    }
+    &-content {
+        font-size: 14px;
+        line-height: 24px;
+        opacity: .7;
+    }
+}
+.creative-task-service-list {
+    & ul {
+        & li {
+            list-style: none;
+            display: block;
+            font-size: 14px;
+            &:not(:last-child) {
+                margin-bottom: 12px;
+            }
+            & i {
+                width: 20px;
+                height: 20px;
+                line-height: 20px;
+                display: inline-block;
+                background: #293568;
+                border-radius: 50%;
+                margin-right: 15px;
+                text-align: center;
+                font-size: 10px;
+            }
+        }
+    }
+}
+
+.creative-task-dashbord-wrap {
+    @include mq(md) {
+        padding: 60px;
+    }
+    & .row {
+        & > .item-1 {
+            width: 34.666667%;
+            @include mq(lg) {
+                width: 43.666667%;
+            }
+            @include mq(md) {
+                width: 100%;
+                margin-bottom: 60px;
+            }
+            @include mq(sm) {
+                width: 100%;
+                margin-bottom: 60px;
+            }
+            @include mq(xs) {
+                width: 100%;
+                margin-bottom: 60px;
+            }
+        }
+        & > .item-2 {
+            width: calc(100% - 34.666667%);
+            @include mq(lg) {
+                width: calc(100% - 43.666667%);
+            }
+            @include mq(md) {
+                width: 100%;
+            }
+            @include mq(sm) {
+                width: 100%;
+            }
+            @include mq(xs) {
+                width: 100%;
+            }
+        }
+    }
+}
+.gradient-dashbord-box  {
+    background-image: -moz-linear-gradient( -60deg, rgb(103,114,227) 0%, rgb(242,91,150) 100%);
+    background-image: -webkit-linear-gradient( -60deg, rgb(103,114,227) 0%, rgb(242,91,150) 100%);
+    background-image: -ms-linear-gradient( -60deg, rgb(103,114,227) 0%, rgb(242,91,150) 100%);
+    padding: 60px;
+    @include mq(lg) {
+        padding: 30px;
+    }
+    @include mq(sm) {
+        padding: 25px;
+    }
+    @include mq(xs) {padding: 20px;}
+}

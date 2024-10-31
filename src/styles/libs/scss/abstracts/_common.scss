@@ -1,0 +1,616 @@
+/*
+--------------------------------------------
+1.common
+*/
+
+/*
+************
+*************************
+
+    Template Name: Sasup - Sass Landing HTML5 Template
+    Author: Bdevs
+    Support: https://support.bdevs.net
+    Description: Sass & Softwer Startup HTML Template
+    Version: 2.0
+
+-----------------------------------------------------------------------------------
+
+CSS INDEX
+===================
+1.common
+2.breadcrumb
+3.buttons
+4.animated
+5.section_title
+6.back-to-top
+7.header
+8.form
+9.hero
+10.feature
+11.slider
+12.cta
+13.development_flowchart
+14.service
+15.team
+16.counter
+17.subscribe
+18.creative_task
+19.pricing
+20.news
+21.news
+22.testimonial
+23.footer
+24.svg
+25.about
+26.faq
+27.breadcrumb
+28.brand
+29.widget
+30.portfolio
+31.biography
+32.contact
+33.error
+
+
+******************************************************* 
+*************************************************************** */
+
+
+@use './variables' as *;
+@use './mixins' as *;
+@use './colors' as *;
+
+
+/*
+************
+*************************
+01. common
+******************************************************* 
+*************************************************************** */
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+
+
+ body {
+    font-family: $poppins;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--clr-body-text);
+    font-size: 16px;
+}
+
+.img,img {
+	max-width: 100%;
+	@include transition(.3s);
+}
+.f-left {
+	float: left
+}
+.f-right {
+	float: right
+}
+.fix {
+	overflow: hidden
+}
+a,
+.button {
+	@include transition(.3s);
+}
+a:focus,
+.button:focus {
+	text-decoration: none;
+	outline: none;
+}
+a:focus,
+a:hover
+{
+	color: inherit;
+	text-decoration: none;
+}
+a,
+button {
+	color: inherit;
+	outline: medium none;
+    text-decoration: none;
+}
+button:focus,input:focus,input:focus,textarea,textarea:focus{
+    outline: 0;
+}
+.uppercase {
+	text-transform: uppercase;
+}
+.capitalize {
+	text-transform: capitalize;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: $poppins;
+	color: var(--clr-body-heading);
+	margin-top: 0px;
+	font-weight: 600;
+	text-transform: normal;
+    margin-bottom: 15px;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+	color: inherit;
+    text-decoration: none;
+}
+h1 {
+	font-size: 60px;
+}
+h2 {
+	font-size: 45px;
+}
+h3 {
+	font-size: 38px;
+}
+h4 {
+	font-size: 28px;
+}
+h5 {
+	font-size: 20px;
+}
+h6 {
+	font-size: 16px;
+}
+ul {
+	margin: 0px;
+	padding: 0px;
+}
+
+p {
+	font-size: 16px;
+	font-weight: normal;
+	line-height: 1.86;
+	margin-bottom: 15px;
+}
+.divider-line {
+	border-bottom: 1px solid #E3E6EE;
+}
+hr {
+	border-bottom: 1px solid #e6e7e9;
+	border-top: 0 none;
+	margin: 0;
+	padding: 0;
+    opacity: 1;
+}
+label {
+	color: var(--clr-body-heading);
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 400;
+}
+*::-moz-selection {
+	background-color: var(--clr-body-heading);
+	color: var(--clr-common-white);
+	text-shadow: none;
+}
+::-moz-selection {
+	background-color: var(--clr-body-heading);
+	color: var(--clr-common-white);
+	text-shadow: none;
+}
+::selection {
+	background-color: var(--clr-common-black);
+	color: var(--clr-common-white);
+	text-shadow: none;
+}
+
+/* <<<<<<<    Input Placeholder   >>>>>>>>> */
+
+input {
+	@include placeholder {
+		color: var(--clr-common-black);
+		font-size: 14px;
+		opacity: 1;
+	}
+}
+
+/* <<<<<<<    Common Classes   >>>>>>>>> */
+
+.fix {
+    overflow:hidden
+}
+.clear{
+    clear: both;
+}
+.w_img {
+    & img {
+        width: 100%;
+    }
+}
+.p-rel {
+    position: relative;
+}
+.p-abs {
+    position: absolute;
+}
+
+
+/* <<<<<<<    Overlay   >>>>>>>>> */
+
+[data-overlay] {
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    &::before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        content: "";
+    }
+}
+
+[data-overlay="light"] {
+    &::before {
+        background-color: var(--clr-common-white);
+    }
+}
+[data-overlay="dark"] {
+    &::before {
+        background-color: var(--clr-common-black);
+    }
+}
+[data-overlay="theme"] {
+    &::before {
+        background-color: #1a2b71;
+    }
+}
+[data-overlay="theme-2"] {
+    &::before {
+        background-color: #00217f;
+    }
+}
+
+[data-opacity="1"] {
+    &::before {
+        opacity: 0.1;
+    }
+}
+[data-opacity="2"] {
+    &::before {
+        opacity: 0.2;
+    }
+}
+[data-opacity="3"] {
+    &::before {
+        opacity: 0.3;
+    }
+}
+[data-opacity="4"] {
+    &::before {
+        opacity: 0.4;
+    }
+}
+[data-opacity="5"] {
+    &::before {
+        opacity: 0.5;
+    }
+}
+[data-opacity="6"] {
+    &::before {
+        opacity: 0.6;
+    }
+}
+[data-opacity="7"] {
+    &::before {
+        opacity: 0.7;
+    }
+}
+[data-opacity="8"] {
+    &::before {
+        opacity: 0.8;
+    }
+}
+[data-opacity="9"] {
+    &::before {
+        opacity: 0.9;
+    }
+}
+
+/* <<<<<<<    Margin & Padding>>>>>>>>> */
+
+@for $i from 1 through 40 {
+    .mt-#{5 * $i}{margin-top: 5px * $i;}
+}
+
+@for $i from 1 through 40 {
+    .mb-#{5 * $i}{margin-bottom: 5px *$i;}
+}
+
+@for $i from 1 through 40 {
+    .ml-#{5 * $i}{margin-left: 5px * $i;}
+}
+
+@for $i from 1 through 40 {
+    .mr-#{5 * $i}{margin-right: 5px *$i;}
+}
+
+@for $i from 1 through 40 {
+    .pt-#{5 * $i}{padding-top: 5px *$i;}
+}
+
+@for $i from 1 through 40 {
+    .pb-#{5 * $i}{padding-bottom: 5px *$i;}
+}
+
+@for $i from 1 through 40 {
+    .pl-#{5 * $i}{padding-left: 5px *$i;}
+}
+
+@for $i from 1 through 40 {
+    .pr-#{5 * $i}{padding-right: 5px *$i;}
+}
+.pr-57 {
+    padding-right: 57px;
+}
+.mb-85 {
+    @include mq(md) {
+        margin-bottom: 45px;
+    }
+    @include mq(xs) {
+        margin-bottom: 40px;
+    }
+}
+.mb-110 {
+    @include mq(sm) {
+        margin-bottom: 80px;
+    }
+    @include mq(xs) {
+        margin-bottom: 70px;
+    }
+}
+.mb-115 {
+    @include mq(sm) {
+        margin-bottom: 80px;
+    }
+    @include mq(xs) {
+        margin-bottom: 70px;
+    }
+}
+.pb-85 {
+    @include mq(xs) {
+        padding-bottom: 70px;
+    }
+}
+.pb-90 {
+    @include mq(xs) {
+        padding-bottom: 40px;
+    }
+}
+.pt-115 {
+    @include mq(md) {
+        padding-top: 80px;
+    }
+    @include mq(sm) {
+        padding-top: 80px;
+    }
+    @include mq(xs) {
+        padding-top: 70px;
+    }
+}
+.pt-120 {
+    @include mq(md) {
+        padding-top: 80px;
+    }
+    @include mq(sm) {
+        padding-top: 80px;
+    }
+    @include mq(xs) {
+        padding-top: 70px;
+    }
+}
+.pt-190 {
+    @include mq(md) {
+        padding-top: 160px;
+    }
+    @include mq(sm) {
+        padding-top: 150px;
+    }
+    @include mq(xs) {
+        padding-top: 130px;
+    }
+}
+.pb-115 {
+    @include mq(md) {
+        padding-bottom: 80px;
+    }
+    @include mq(sm) {
+        padding-bottom: 80px;
+    }
+    @include mq(xs) {
+        padding-bottom: 70px;
+    }
+}
+.pb-110 {
+    @include mq(md) {
+        padding-bottom: 80px;
+    }
+    @include mq(sm) {
+        padding-bottom: 80px;
+    }
+    @include mq(xs) {
+        padding-bottom: 70px;
+    }
+}
+.pb-120 {
+    @include mq(md) {
+        padding-bottom: 80px;
+    }
+    @include mq(sm) {
+        padding-bottom: 80px;
+    }
+    @include mq(xs) {
+        padding-bottom: 70px;
+    }
+}
+.pb-160 {
+    @include mq(lg) {
+        padding-bottom: 100px;
+    }
+    @include mq(md) {
+        padding-bottom: 80px;
+    }
+    @include mq(sm) {
+        padding-bottom: 80px;
+    }
+    @include mq(xs) {
+        padding-bottom: 70px;
+    }
+}
+
+/* <<<<<<<    Declaration   >>>>>>>>> */
+
+// color declaration
+
+:root {
+    @each $color, $shades in $colors {
+        @each $shade, $value in $shades {
+            --clr-#{$color}-#{$shade}: #{$value};
+        }
+    }
+}
+
+.white-text {
+    color: #fff;
+}
+
+.sasup-gray-border-btn {
+    display: inline-block;
+    height: 40px;
+    text-decoration: none;
+    line-height: 35px;
+    padding: 0 20px;
+    border: 2px solid #e6e7e9;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #0a1426;
+    &:hover {
+        background-color: var(--clr-theme-1);
+        color: var(--clr-common-white);
+        border-color: transparent;
+    }
+    &.theme-bg {
+        background-color: var(--clr-theme-1);
+        color: #fff;
+        border-color: transparent;
+        &:hover {
+            background-color: #ff6600;
+        }
+    }
+    &.theme-3 {
+        background-color: #ff6600;
+        border-color: transparent;
+        color: #fff;
+        &:hover {
+            background-color: var(--clr-theme-1);
+            color: #fff;
+        }
+    }
+}
+.theme_bg {
+    background-color: var(--clr-theme-1);
+}
+.sasup-bg-gray-1 {
+	background-color: #F8F9FA;
+}
+.sasup-bg-1 {
+    background-color: #f2f3f8;
+}
+.sasup-white-bg {
+    background-color: #ffffff;
+}
+.mb-47 {
+    margin-bottom: 47px;
+}
+.non-fix {
+    overflow: visible;
+}
+.love-box {
+    -webkit-animation: hero-thumb-animation 2s linear infinite alternate;
+    -moz-animation: hero-thumb-animation 2s linear infinite alternate;
+    -o-animation: hero-thumb-animation 2s linear infinite alternate;
+    animation: hero-thumb-animation 2s linear infinite alternate;
+}
+.demo-width {
+    width: 330px;
+}
+.white-fill {
+    fill: #fff;
+}
+.white-color {
+    color: #fff;
+}
+.visible-br-sm {
+        & br {
+            @include mq(sm) {
+                display: block;
+        }
+    }
+}
+.pt-250  {
+    padding-top: 250px;
+}
+.pt-290 {
+    padding-top: 290px;
+}
+.pb-205 {
+    padding-bottom: 205px;
+}
+.mb-28 {
+    margin-bottom: 28px;
+}
+
+.pl-xxl-70 {
+    padding-left: 70px;
+    @include mq(xl) {
+        padding-left: 0;
+    }
+    @include mq(lg) {
+        padding-left: 0;
+    }
+    @include mq(md) {
+        padding-left: 0;
+    }
+    @include mq(xs) {
+        padding-left: 0;
+    }
+}
+.bg-defult {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat
+}
+.has-white-border-top {
+    border-top: 1px solid #22458b;
+}
+.opacity-7 {
+    opacity: .7;
+}
+.pb-128 {
+    padding-bottom: 128px;
+}
+.bg-default {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.pt-300 {
+    padding-top: 300px;
+}

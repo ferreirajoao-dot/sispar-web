@@ -1,0 +1,21 @@
+/*
+--------------------------------------------
+33.error
+*/
+@use "../abstracts/mixins" as *;
+.error {
+    &-title {
+        font-size: 40px;
+        font-weight: 600;
+        color: #0a1426;
+        margin-bottom: 12px;
+        @include mq(xs) {
+            font-size: 30px;
+        }
+    }
+    &-subtitle {
+        font-size: 18px;
+        color: #535559;
+        margin-bottom: 26px;
+    }
+}

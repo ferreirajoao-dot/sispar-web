@@ -1,0 +1,20 @@
+.single-rating-count {
+    &-number {
+        font-size: 26px;
+        color: #0a1426;
+        margin-bottom: 5px;
+    }
+    &-label {
+        font-size: 14px;
+        margin-bottom: 0;
+        color: #535559;
+    }
+}
+.rating-count-wrap {
+    display: flex;
+    padding-right: 17px;
+    justify-content: space-between;
+    & > * {
+        flex: 0 0 auto;
+    }
+}

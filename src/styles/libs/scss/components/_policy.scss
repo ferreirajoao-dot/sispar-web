@@ -1,0 +1,123 @@
+/* --------------------------------------------
+30. Policy */
+@use '../abstracts/mixins' as *;
+
+
+.df-section-wrapper p {
+    font-size: 16px;
+    line-height: 1.62;
+}
+
+.policy__title {
+    font-size: 44px;
+    @include mq(sm) {
+        font-size: 36px;
+    }
+    @include mq(xs) {
+        font-size: 26px;
+    }
+}
+.sasup-policy {
+    &__wrapper {
+        padding: 50px 60px 60px 50px;
+        background: var(--clr-common-white);
+        box-shadow: 0px 6px 35px 0px rgba(214, 215, 213, 0.4);
+
+        @include mq(sm) {
+            padding: 40px 40px;
+        }
+        @include mq(xs) {
+            padding: 30px 20px;
+        }
+    }
+
+    &__meta {
+        font-weight: 500;
+        font-size: 16px;
+        letter-spacing: -0.02em;
+        margin-bottom: 12px;
+    }
+
+    &__wrapper p {
+        font-size: 16px;
+        line-height: 1.62;
+        margin-bottom: 11px;
+    }
+
+    &__title {
+        font-size: 28px;
+        letter-spacing: -0.04em;
+        color: var(--clr-common-black);
+        margin-bottom: 17px;
+
+        @include mq(lg) {
+            font-size: 24px;
+        }
+        @include mq(md) {
+            font-size: 24px;
+        }
+        @include mq(sm) {
+            font-size: 20px;
+        }
+        @include mq(xs) {
+            font-size: 20px;
+        }
+
+        &-2 {
+            margin-bottom: 35px;
+
+            p {
+                margin-bottom: 25px;
+            }
+        }
+    }
+
+    &__item {
+        ul {
+            li {
+                font-size: 16px;
+                position: relative;
+                padding-left: 15px;
+                list-style: none;
+
+                &::after {
+                    position: absolute;
+                    content: "";
+                    left: 0;
+                    top: 11px;
+                    width: 5px;
+                    height: 5px;
+                    background-color: var(--clr-common-black);
+                    border-radius: 50%;
+                }
+
+                &:not(:last-child) {
+                    margin-bottom: 5px;
+                }
+            }
+        }
+    }
+
+    &__contact {
+        >p {
+            margin-bottom: 14px;
+        }
+
+        ul {
+            margin-bottom: 15px;
+
+            li {
+                list-style: none;
+                font-size: 16px;
+                color: var(--clr-common-black);
+            }
+        }
+    }
+
+    &__address {
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+    }
+}

@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react";
+import React, {useEffect} from "react";
 import Header from "@/ui/layout/header";
 import {Footer} from "@/ui/layout/footer";
 import Providers from "@/ui/layout/providers-component";
@@ -8,10 +8,10 @@ import Providers from "@/ui/layout/providers-component";
 
 export default function Layout({children}) {
 
-    return (
+      return (
         <Providers>
             <Header/>
-            <main className={"app-wrapper flex-column flex-row-fluid position-relative"}>
+            <main>
                 {children}
             </main>
             <Footer/>

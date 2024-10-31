@@ -1,0 +1,564 @@
+/*
+--------------------------------------------
+11.slider
+*/
+@use '../abstracts/mixins' as *;
+.sasup-slider-height-2 {
+    min-height: 950px;
+    @include mq(xl) {
+        min-height: 850px;
+    }
+    @include mq(lg) {
+        min-height: 750px;
+    }
+    @include mq(md) {
+        min-height: 650px;
+    }
+    @include mq(xs) {
+        padding-bottom: 123px;
+        padding-top: 110px;
+    }
+}
+.sasup-slider{
+    &-actions {
+        @include mq(md) {
+            margin-bottom: 10px;
+        }
+    }
+    &-content {
+        @include mq(xl) {
+            padding-right: 95px;
+        }
+        @include mq(lg) {
+            padding-right: 50px;
+        }
+        @include mq(md) {
+            padding-right: 30px;
+        }
+        &-subtitle {
+            font-size: 14px;
+            color: #2f75ff;
+            text-transform: uppercase;
+            line-height: 1;
+            display: block;
+            margin-bottom: 13px;
+        }
+        &-title {
+            font-size: 60px;
+            font-weight: 700;
+            color: #0a1426;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            @include mq(xl) {
+                font-size: 45px;
+            }
+            @include mq(lg) {
+                font-size: 40px;
+            }
+            @include mq(md) {
+                font-size: 29px;
+                margin-bottom: 13px;
+            }
+            @include mq(sm) {
+                font-size: 40px;
+            }
+            @include mq(xs) {
+                font-size: 29px;
+            }
+        }
+        &-desc {
+            font-size: 18px;
+            margin-bottom: 36px;
+            line-height: 26px;
+            @include mq(md) {
+                font-size: 15px;
+                margin-bottom: 15px;
+                line-height: 24px;
+            }
+            @include mq(xs) {
+                margin-bottom: 15px;
+                line-height: 1.3;
+            }
+            & br {
+                @include mq(lg) {
+                    display: none;
+                }
+                @include mq(md) {
+                    display: none;
+                }
+                @include mq(xs) {
+                    display: none;
+                }
+            }
+        }
+        &-list {
+            & li {
+                list-style-type: none;
+                display: block;
+                &:not(:last-child) {
+                    margin-bottom: 4px;
+                }
+                & i {
+                    color: #2ba53f;
+                    font-size: 14px;
+                    margin-right: 10px;
+                }
+                & span {
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: #535559;
+                }
+            }
+        }
+    }
+}
+
+.slider-shapes {
+    & > *:not(.shape-1) {
+        position: absolute;
+    }
+    & .shape-1 {
+        & img {
+            -webkit-animation: hero-thumb-animation 2s linear infinite alternate;
+            -moz-animation: hero-thumb-animation 2s linear infinite alternate;
+            -o-animation: hero-thumb-animation 2s linear infinite alternate;
+            animation: hero-thumb-animation 2s linear infinite alternate;
+            max-width: inherit;
+             @include mq(xxl) {
+                max-width: 568px;
+            }
+            @include mq(xl) {
+                max-width: 450px;
+            }
+            @include mq(lg) {
+                max-width: 450px;
+            }
+            @include mq(md) {
+                max-width: 335px;
+            }
+            @include mq(sm) {
+                max-width: 100%;
+            }
+            @include mq(xs) {
+                max-width: 100%;
+            }
+        }
+    }
+    & .shape-2 {
+        left: -100px;
+        bottom: -60px;
+        @include mq(xxl) {
+            left: -41px;
+        }
+        @include mq(xl) {
+            left: -47px;
+        }
+        @include mq(lg) {
+            left: -40px;
+        }
+        @include mq(md) {
+            left: -35px;
+        }
+        @include mq(sm) {
+            left: -19px;
+        }
+        @include mq(xs) {
+            left: -7px;
+            bottom: -60px;
+        }
+        & img {
+            -webkit-animation: hero-thumb-sm-2-animation 4s linear infinite alternate;
+            -moz-animation: hero-thumb-sm-2-animation 4s linear infinite alternate;
+            -o-animation: hero-thumb-sm-2-animation 4s linear infinite alternate;
+            animation: hero-thumb-sm-2-animation 4s linear infinite alternate;
+            @include  mq(xl) {
+                max-width: 160px;
+            }
+            @include mq(lg) {
+                max-width: 150px;
+            }
+            @include mq(md) {
+                max-width: 140px;
+            }
+            @include mq(sm) {
+                max-width: 150px;
+            }
+            @include mq(xs) {
+                max-width: 88px;
+            }
+        }
+    }
+    & .shape-4 {
+        position: absolute;
+        bottom: -80px;
+        right: -90px;
+        @include mq(xl) {
+            right: 24px;
+        }
+        @include mq(xxl) {
+            position: absolute;
+            bottom: -80px;
+            right: -8px;
+        }
+        @include mq(lg) {
+            right: 80px;
+        }
+        @include mq(md) {
+            right: 40px;
+            left: auto;
+        }
+        @include mq(sm) {
+            right: 39px;
+        }
+         @include mq(xs) {
+            bottom: -40px;
+            right: 68px;
+        }
+        
+        & img {
+            -webkit-animation: hero-thumb-sm-animation 4s linear infinite alternate;
+            -moz-animation: hero-thumb-sm-animation 4s linear infinite alternate;
+            -o-animation: hero-thumb-sm-animation 4s linear infinite alternate;
+            animation: hero-thumb-sm-animation 4s linear infinite alternate;
+            @include mq(xl) {
+                max-width: 205px;
+            }
+            @include mq(lg) {
+                max-width: 200px;
+            }
+            
+            @include mq(md) {
+                max-width: 170px;
+            }
+            @include mq(sm) {
+                max-width: 200px;
+            }
+            @include mq(xs) {
+                max-width: 100px;
+            }
+            
+        }
+    }
+    & .shape-3 {
+        top: 150px;
+        right: -255px;
+        @include mq(xxl) {
+            right: -79px;
+        }
+        @include mq(xl) {
+            right: -25px;
+        }
+        @include mq(lg) {
+            top: 40px;
+            right: 42px;
+        }
+        @include mq(md) {
+            top: 45px;
+            right: 0;
+        }
+        @include mq(sm) {
+            right: 24px;
+        }
+        @include mq(xs) {
+            top: 19px;
+            right: 14px;
+        }
+        
+        & img {
+            -webkit-animation: hero-thumb-sm-2-animation 4s linear infinite alternate;
+            -moz-animation: hero-thumb-sm-2-animation 4s linear infinite alternate;
+            -o-animation: hero-thumb-sm-2-animation 4s linear infinite alternate;
+            animation: hero-thumb-sm-2-animation 4s linear infinite alternate;
+            @include mq(xl) {
+                max-width: 185px;
+            }
+            @include mq(lg) {
+                max-width: 220px;
+            }
+            @include mq(md) {
+                max-width: 150px;
+            }
+            @include mq(sm) {
+                max-width: 200px;
+            }
+            @include mq(xs) {
+                max-width: 132px;
+            }
+        }
+    }
+    & .shape-inner {
+        & img {
+            border-radius: 4px;
+        }
+    }
+}
+.has-shadow-1 {
+    box-shadow: 0px 40px 40px 0px #00052724;
+}
+.has-shadow-2 {
+    box-shadow: 0px 20px 70px 0px #00052733;
+}
+
+.has-shadow-3 {
+    box-shadow: 0px 30px 70px 0px #0005271a;
+}
+.slider-shape-space {
+    margin-top: -67px;
+    @include mq(lg) {
+        margin-top: 0;
+    }
+    @include mq(md) {
+        margin-top: 0;
+    }
+}
+.slider-shapes-2 {
+    & .shape-default {
+        position: absolute;
+    }
+    .shape-1 {
+        top: 420px;
+        left: 0;
+        -webkit-animation: hero-thumb-animation 2s linear infinite alternate;
+        -moz-animation: hero-thumb-animation 2s linear infinite alternate;
+        -o-animation: hero-thumb-animation 2s linear infinite alternate;
+        animation: hero-thumb-animation 2s linear infinite alternate;
+        @include mq(xl) {
+            left: -16px;
+        }
+        @include mq(lg) {
+            left: -24px;
+        }
+        @include mq(md) {
+            left: -15px;
+        }
+    }
+    .shape-2 {
+        top: 175px;
+        left: 255px;
+        -webkit-animation: hero-circle-2 4s linear 0s infinite alternate;
+        -moz-animation: hero-circle-2 4s linear 0s infinite alternate;
+        -o-animation: hero-circle-2 4s linear 0s infinite alternate;
+        animation: hero-circle-2 4s linear 0s infinite alternate;
+        @include mq(md) {
+            top: 113px;
+        }
+    }
+    .shape-3 {
+        top: 220px;
+        right: 100px;
+        -webkit-animation: hero-triangle-1 6s linear infinite;
+        -moz-animation: hero-triangle-1 6s linear infinite;
+        -o-animation: hero-triangle-1 6s linear infinite;
+        animation: hero-triangle-1 6s linear infinite;
+    }
+    .shape-4 {
+        right: 120px;
+        bottom: 140px;
+        -webkit-animation: hero-circle-2 4s linear 0s infinite alternate;
+        -moz-animation: hero-circle-2 4s linear 0s infinite alternate;
+        -o-animation: hero-circle-2 4s linear 0s infinite alternate;
+        animation: hero-circle-2 4s linear 0s infinite alternate;
+        @include mq(md) {
+            bottom: 70px;
+        }
+    }
+}
+.extra-slider-shape {
+    @include mq(lg) {
+        display: none;
+    }
+    & .shape-1 {
+        position: absolute;
+        bottom: 18px;
+        left: 400px;
+        -webkit-animation: services-triangle 7s linear infinite alternate;
+        -moz-animation: services-triangle 7s linear infinite alternate;
+        -o-animation: services-triangle 7s linear infinite alternate;
+        animation: services-triangle 7s linear infinite alternate;
+    }
+    & .shape-2 {
+        bottom: -297px;
+        right: 370px;
+        position: absolute;
+        @include mq(md) {
+            display: none;
+        }
+    }
+}
+.pos-visible {
+    position: relative;
+    z-index: 99;
+}
+.sasup-slider-actions {
+    @include mq(sm) {
+        margin-bottom: 100px;
+    }
+    @include mq(xs) {
+        margin-bottom: 90px;
+    }
+    & .sasup-video-btn {
+        @include mq(sm) {
+            transform: translateY(-8px);
+        }
+    }
+}
+.hero-gradient-2 {
+    background-image: -moz-linear-gradient( 60deg, rgb(56,12,127) 0%, rgb(105,34,250) 100%);
+    background-image: -webkit-linear-gradient( 60deg, rgb(56,12,127) 0%, rgb(105,34,250) 100%);
+    background-image: -ms-linear-gradient( 60deg, rgb(56,12,127) 0%, rgb(105,34,250) 100%);
+}
+.hero {
+    &-subtitle-2 {
+        font-size: 14px;
+        color: #fff;
+        margin-bottom: 15px;
+        display: block;
+    }
+    &-title-2 {
+        font-size: 60px;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 18px;
+        @include mq(xs) {
+            font-size: 27px;
+            margin-bottom: 12px;
+        }
+        @include mq(xl) {
+            font-size: 55px;
+        }
+        @include mq(lg) {
+            font-size: 45px;
+        }
+        @include mq(md) {
+            font-size: 40px;
+        }
+        & br {
+            @include mq(xs) {
+                display: none;
+            }
+            @include mq(lg) {
+                display: none;
+            }
+
+        }
+    }
+    &-content-2 {
+        font-size: 18px;
+        line-height: 26px;
+        margin-bottom: 40px;
+        color: #fff;
+        opacity: .7;
+        @include mq(xs) {
+            font-size: 16px;
+        }
+        & br {
+            @include mq(xs) {
+                display: none;
+            }
+            @include mq(lg) {
+                display: none;
+            }
+        }
+    }
+}
+.sasup-slider-height-3 {
+    min-height: 950px;
+    @include mq(xs) {
+        min-height: 770px;
+    }
+    @include mq(sm) {
+        min-height: 950px;
+    }
+    @include mq(xl) {
+        min-height: 880px;
+    }
+    @include mq(md) {
+        padding-top: 140px;
+    }
+    @include mq(lg) {
+        min-height: 678px;
+    }
+}
+.dollar {
+    -webkit-animation: hero-thumb-sm-animation 4s linear infinite alternate;
+    -moz-animation: hero-thumb-sm-animation 4s linear infinite alternate;
+    -o-animation: hero-thumb-sm-animation 4s linear infinite alternate;
+    animation: hero-thumb-sm-animation 4s linear infinite alternate;
+}
+.map-box {
+    -webkit-animation: hero-thumb-sm-3-animation 4s linear infinite alternate;
+    -moz-animation: hero-thumb-sm-3-animation 4s linear infinite alternate;
+    -o-animation: hero-thumb-sm-3-animation 4s linear infinite alternate;
+    animation: hero-thumb-sm-3-animation 4s linear infinite alternate;
+}
+.object-width {
+    width: 655px;
+    @include mq(xs) {
+        width: 100%;
+    }
+    @include mq(xl) {
+        width: 100%;
+        max-width: 100%;
+    }
+    @include mq(lg) {
+        width: 100%;
+        max-width: 100%;
+    }
+    @include mq(md) {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+.slider-content-space-2 {
+    position: relative;
+    z-index: 9;
+    @include mq(sm) {
+        margin-top: 65px;
+    }
+    @include mq(xs) {
+        margin-top: 65px;
+    }
+}
+.hero-space-1{
+	background-size: cover;
+}
+
+////
+.sasup-arrow-right-4 {
+	text-align: right;
+	transform: translateY(-18px);
+    @include mq(sm) {
+        text-align: start;
+        margin-top: 40px;
+    }
+    @include mq(xs) {
+        text-align: start;
+        margin-top: 40px;
+    }
+}
+.sasup-arrow-right-4 > * {
+	display: inline-block;
+}
+.sasup-swiper-arrow-style-4 {
+	width: 50px;
+	height: 50px;
+	border-radius: 25px;
+	transition: all .3s;
+	border: 1px solid #F5F5F5;
+	text-align: center;
+	color: #0F1216;
+}
+.sasup-swiper-arrow-style-4 i {
+	font-size: 22px;
+	line-height: 48px;
+	color: #0F1216;
+	transition: all .3s;
+}
+.sasup-arrow-right-4 .swiper-button-next-4 {
+	margin-left: 10px;
+}
+.sasup-swiper-arrow-style-4:hover {
+	background: #FF785A;
+	border-color: transparent;
+	box-shadow: 6px 20px 30px rgba(251, 74, 34, 0.2);
+}

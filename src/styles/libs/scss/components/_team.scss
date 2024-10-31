@@ -1,0 +1,140 @@
+/*
+--------------------------------------------
+15.team
+*/
+@use '../abstracts/mixins' as *;
+.team-social {
+    & a {
+        width: 36px;
+        height: 36px;
+        display: inline-block;
+        line-height: 36px;
+        text-align: center;
+        background: #fff;
+        border-radius: 4px;
+        margin: 0 4px;
+        font-size: 15px;
+        &:hover {
+            background-color: #2f75ff;
+            color: #fff;
+        }
+    }
+}
+
+.single-team {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    & img {
+        width: 100%;
+    }
+    & .team-desc {
+        @include transition(.3s);
+    }
+    & .team-social {
+        position: absolute;
+        left: 0;
+        right: 0;
+        text-align: center;
+        opacity: 0;
+        @include transition(.3s);
+        visibility: hidden;
+        bottom: -26px;
+    }
+    &::after {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        height: 250px;
+        background-image: -moz-linear-gradient( 90deg, #0a1426b3 0%, #0a1426b3 0%, #0a142600 100%);
+        background-image: -webkit-linear-gradient( 90deg, #0a1426b3 0%, #0a1426b3 0%, #0a142600 100%);
+        background-image: -ms-linear-gradient( 90deg, #0a1324b3 0%, #0a1426b3 0%, #0a142600 100%);
+        content: "";
+    }
+    & .content {
+        position: absolute;
+        left: 0;
+        padding-bottom: 35px;
+        bottom: 0;
+        right: 0;
+        @include transition(.3s);
+        z-index: 9;
+        & h5 {
+            color: #fff;
+            margin-bottom: 0;
+            & a {
+                font-size: 20px;
+                font-weight: 500;
+                text-decoration: none;
+            }
+        }
+        & .job {
+            color: #fff;
+            text-decoration: none;
+            font-size: 15px;
+            margin-bottom: 5px;
+            display: block
+        }
+    }
+    & img {
+        @include transition(.3s);
+    }
+    &:hover {
+        & img {
+            transform: scale(1.05);
+        }
+        & .team-social {
+            opacity: 1;
+            visibility: visible;
+            bottom: 40px;
+        }
+        & .team-desc {
+            transform: translateY(65px);
+            opacity: 0;
+        }
+    }
+}
+.team-action-btn {
+    font-size: 15px;
+    text-decoration: none;
+    color: #535559;
+    font-weight: 500;
+    display: inline-block;
+    & i {
+        font-weight: 500;
+        margin-left: 4px;
+        font-size: 14px;
+        vertical-align: middle;
+    }
+}
+
+.support-sm-team {
+    &-label {
+        font-size: 15px;
+        display: inline-block;
+        font-weight: 500;
+        margin-right: 13px;
+        color: #0a1426;
+    }
+    &-thumb-group {
+        display: inline-block;
+        & > * {
+            display: inline-block;
+            width: 38px;
+            border-radius: 50px;
+            border: 2px solid #fff;
+            height: 38px;
+            & img {
+                border-radius: 50%;
+            }
+            &:not(:first-child) {
+                margin-left: -12px;
+            }
+        }
+    }
+}
+// team details
+.has-header-shadow-bottom {
+    box-shadow: 0px 20px 40px 0px #0005271a;
+}

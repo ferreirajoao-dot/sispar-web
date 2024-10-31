@@ -1,0 +1,322 @@
+/*
+--------------------------------------------
+5.section_title
+*/
+@use '../abstracts/variables' as *;
+@use '../abstracts/colors' as *;
+@use '../abstracts/mixins' as *;
+
+
+/*
+************
+*************************
+22. Section Title
+******************************************************* 
+*************************************************************** */
+
+.sasup-s-subtitle {
+    font-weight: 500;
+    font-size: 15px;
+    color: #2f75ff;
+    display: block;
+    margin-bottom: 14px;
+    &.title-white {
+        color: #fff;
+    }
+}
+.sasup-s-title {
+    font-size: 40px;
+    line-height: 100%;
+    font-weight: 700;
+    line-height: 46px;
+    @include mq(sm) {
+        font-size: 35px;
+        line-height: 1.2;
+    }
+    @include mq(xs) {
+        font-size: 23px;
+        line-height: 1.3;
+    }
+    & br {
+        @include mq(xs) {
+            display: none;
+        }
+    }
+    &-2 {
+        line-height: 50px;
+        @include mq(lg) {
+            font-size: 35px;
+            list-style: 1.2;
+        }
+    }
+    color: #0a1426;
+    &.title-white {
+        color: #fff;
+    }
+}
+
+.section-title-2 {
+    & .s-title {
+        margin-bottom: 12px;
+        font-weight: 700;
+        color: #0a1426;
+        font-size: 40px;
+        line-height: 50px;
+        @include mq(xl) {
+            font-size: 35px;
+            line-height: 1.2;
+        }
+        @include mq(sm) {
+            font-size: 30px;
+            line-height: 1.2;
+        }
+        @include mq(xs) {
+            font-size: 26px;
+            line-height: 1.2;
+        }
+        @include mq(md) {
+            font-size: 34px;
+            line-height: 1.3;
+        }
+        & br {
+            @include mq(lg) {
+                display: none;
+            }
+            @include mq(xs) {
+                display: none;
+            }
+        }
+        &.title-white {
+            color: #fff;
+        }
+        &.visile-br-lg {
+            & br {
+                @include mq(lg) {
+                display: block;
+                }
+            }
+        }
+    }
+    & .s-desc {
+        color: #535559;
+        &.title-white {
+            color: #fff;
+        }
+        &.s-desc-2 {
+            line-height: 24px;
+            opacity: 0.7;
+        }
+    }
+}
+.section-title-big {
+    & .s-title {
+        font-size: 50px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 9px;
+        @include mq(md) {
+            font-size: 42px;
+        }
+        @include mq(sm) {
+            font-size: 35px;
+        }
+        @include mq(xs) {
+            font-size: 30px;
+        }
+        &.has-extra-title-info {
+            margin-bottom: 0;
+        }
+    }
+    & .s-desc {
+        font-size: 16px;
+        margin-bottom: 0;
+        opacity: .7;
+        &-2 {
+            font-size: 15px;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 5px;
+        }
+    }
+}
+
+
+
+.s-title-3{
+    & .s-title {
+        font-size: 44px;
+        @include mq(xs) {
+            font-size: 25px;
+            line-height: 1.4;
+        }
+        @include mq(md) {
+            font-size: 32px;
+        }
+        & br {
+            @include mq(xs) {
+                display: none;
+            }
+        }
+    }
+}
+.section-title-3 {
+    & .s-title {
+        font-size: 40px;
+        font-weight: 800;
+        color: #0a1426;
+        margin-bottom: 9px;
+        @include mq(xs) {
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+        & br {
+            @include mq(xs) {
+                display: none;
+            }
+        }
+    }
+    & .s-desc {
+        font-size: 20px;
+        color: #535559;
+        margin-bottom: 0;
+        @include mq(xs) {
+            font-size: 16px;
+            line-height: 1.4;
+        }
+    }
+}
+.sasup-s-desc {
+    line-height: 24px;
+    color: #535559;
+}
+.line-height-24 {
+    line-height: 24px;
+}
+.client-s-title {
+    font-size: 16px;
+    line-height: 22px;
+    color: #0a1426;
+    font-weight: 600;
+}
+.section-title-4 {
+    & .s-title {
+        font-size: 40px;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: #171a34;
+        @include mq(xs) {
+            font-size: 30px;
+        }
+    }
+    & .s-desc {
+        line-height: 24px;
+        margin-bottom: 0;
+    }
+}
+
+
+// sm section title style
+.sasup-sm {
+    &-section {
+        &-title {
+            font-family: $space;
+            font-weight: 500;
+            font-size: 16px;
+            margin-bottom: 18px;
+            color: var(--clr-common-black-2);
+            &.style-2 {
+                margin-bottom: 35px;
+            }
+        }
+    }
+}
+// section tile style 4
+.sasup-section {
+    &-title {
+        &-4 {
+            font-family: $space;
+            font-weight: 700;
+            font-size: 46px;
+            margin-bottom: 11px;
+            letter-spacing: -0.04em;
+            color: var(--clr-common-black-2);
+            line-height: 1.2;
+            @include mq(xs) {
+                font-size: 34px;
+            }
+        }
+    }
+    &-subtitle-4 {
+        font-family: $roboto;
+        font-size: 18px;
+        line-height: 28px;
+        margin-bottom: 0;
+        color: var(--clr-body-gray);
+    }
+    @at-root {
+        .sasup-section-badge-4 {
+            font-family: $roboto;
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--clr-common-white);
+            height: 30px;
+            background: var(--clr-theme-4);
+            border-radius: 50px;
+            display: inline-block;
+            line-height: 30px;
+            padding: 0 17px;
+        }
+    }
+}
+
+// scetion title style 5
+.sasup-section {
+    &-heading-5-subtitle {
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--clr-theme-5);
+        font-family: Space Grotesk;
+        display: block;
+        margin-bottom: 7px;
+    }
+    &-heading-5-title {
+        font-size: 46px;
+        color: var(--clr-body-heading);
+        font-weight: 700;
+        font-family: Space Grotesk;
+        line-height: 1.19;
+        @include mq(md) {
+            font-size: 35px;
+        }
+        @include mq(sm) {
+            font-size: 30px;
+        }
+        @include mq(xs) {
+            font-size: 22px;
+        }
+
+        span {
+            position: relative;
+            display: inline-block;
+            &::before {
+                position: absolute;
+                inset-inline-start: 30px;
+                bottom: -8px;
+                //background-image: url("../img/shape/title_line.webp");
+                content: "";
+                width: 120px;
+                height: 17px;
+                background-position: left bottom;
+                background-repeat: no-repeat;
+                animation-name: line_movement;
+                animation-iteration-count: infinite;
+                animation-timing-function: linear;
+                animation-duration: 1.5s;
+                animation-delay: 6s;
+                @include mq(xs) {
+                    bottom: -15px;
+                }
+            }
+        }
+    }
+}

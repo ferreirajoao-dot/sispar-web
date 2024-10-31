@@ -1,0 +1,143 @@
+/*
+--------------------------------------------
+31.biography
+*/
+@use '../abstracts/mixins' as *;
+.author-biography-thumb {
+    border-radius: 4px;
+    overflow: hidden;
+}
+.single-author-biography {
+    &-title {
+        font-size: 20px;
+        font-weight: 600;
+        color: #0a1426;
+        margin-bottom: 15px;
+        &.space-2 {
+            margin-bottom: 33px;
+        }
+    }
+    &-desc {
+        font-size: 15px;
+        color: #535559;
+        line-height: 24px;
+        margin-bottom: 31px;
+    }
+    &-address-list {
+        margin-bottom: 28px;
+        & ul {
+            & li {
+                font-size: 15px;
+                color: #0a1426;
+                list-style: none;
+                margin-bottom: 14px;
+                & i {
+                    color: var(--clr-theme-1);
+                    font-size: 13px;
+                    margin-right: 8px;
+                    display: inline-block;
+                }
+            }
+        }
+    }
+    &-social {
+        & a  {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 2px solid #e6e7e9;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 14px;
+            line-height: 26px;
+            color: #0a1426;
+            margin-right: 6px;
+            &:hover {
+                background-color: var(--clr-theme-1);
+                color: #fff;
+                border-color: transparent;
+            }
+        }
+    }
+}
+.bar-title {
+    & h4 {
+        font-size: 14px;
+        font-weight: 500;
+        color: #0a1426;
+        display: block;
+        margin-bottom: 0;
+    }
+}
+.single-skill {
+    & .bar-title {
+        margin-bottom: 12px;
+    }
+    & .progress {
+        position: relative;
+        overflow: visible;
+        height: 4px;
+        & .progress-bar {
+            background-color: var(--clr-theme-1);
+            position: relative;
+            overflow: visible;
+            & span {
+                font-size: 14px;
+                font-weight: 500;
+                color: #0a1426;
+                position: absolute;
+                right: 0;
+                top: -28px;
+            }
+        }
+    }
+}
+
+.prev-arrow-redirect, .next-arrow-redirect {
+    height: 25px;
+    border-radius: 4px;
+    display: inline-block;
+    font-size: 13px;
+    padding: 0 13px;
+    text-decoration: none;
+    line-height: 20px;
+    font-weight: 500;
+    & i {
+        font-size: 13px;
+    }
+}
+.prev-arrow-redirect {
+    border: 2px solid #e6e7e9;
+    color: #535559;
+    & i {
+        margin-right: 4px;
+    }
+    &:hover {
+        background-color: var(--clr-theme-1);
+        color: #fff;
+        border-color: transparent;
+    }
+}
+.next-arrow-redirect {
+    background-color: var(--clr-theme-1);
+    color: #fff;
+    border: 2px solid transparent;
+    & i {
+        margin-left: 4px;
+    }
+    &:hover {
+        background-color: #ff6600;
+        color: #fff;
+    }
+}
+.biography-info-space {
+    @include mq(lg) {
+        padding-left: 14px;
+    }
+    @include mq(md) {
+        padding-left: 0;
+    }
+    @include mq(xs) {
+        padding-left: 0;
+    }
+}

@@ -1,0 +1,23 @@
+/*
+--------------------------------------------
+28.brand
+*/
+@use '../abstracts/mixins' as *;
+.single-brand {
+    & img {
+        @include transition(.3s);
+        filter: grayscale(1);
+        &:hover {
+            filter: grayscale(0);
+        }
+    }
+}
+.mb-28 {
+    margin-bottom: 28px;
+}
+
+.sasup-sm-brand-single-4 {
+    img {
+        max-width: 100px;
+    }
+}

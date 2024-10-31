@@ -1,0 +1,85 @@
+/*
+--------------------------------------------
+17.subscribe
+*/
+@use '../abstracts/mixins' as *;
+.subscribe-form {
+    & input[type="email"] {
+        width: 310px;
+        background: #fff;
+        height: 50px;
+        border-radius: 4px;
+        border: 0;
+        font-size: 14px;
+        padding: 0 30px;
+        color: #535559;
+        @include mq(xs) {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+    }
+    & button[type="submit"] {
+        font-size: 15px;
+        font-weight: 500;
+        border: 0;
+        background: #0a1426;
+        height: 50px;
+        color: #fff;
+        margin-left: 8px;
+        border-radius: 4px;
+        padding: 0 30px;
+        @include transition(.3s);
+        &:hover {
+            background-color: #ff6600;
+        }
+    }
+}
+.service-list-2 {
+    & span {
+        font-size: 14px;
+        display: inline-block;
+        margin: 0 17px;
+        font-weight: 500;
+        & i {
+            margin-right: 7px;
+        }
+    }
+}
+.subscribe-s-title {
+    & .s-subtitle {
+        font-size: 14px;
+        font-weight: 500;
+        display: block;
+        color: #ff4e80;
+        margin-bottom: 14px;
+    }
+    & .s-title {
+        font-size: 40px;
+        font-weight: 700;
+        color: #0a1426;
+        @include mq(xs) {
+            font-size: 31px;
+        }
+        & br {
+            @include mq(xs) {
+                display: none;
+            }
+        }
+    }
+}
+
+.subscribe-left-space-2 {
+    @include mq(xs) {
+        padding-top: 0;
+        margin-bottom: 30px;
+    }
+    @include mq(md) {
+        padding-top: 0;
+        margin-bottom: 30px;
+    }
+}
+.subscribe-area-space-2 {
+    @include mq(xs) {
+        padding: 100px 0;
+    }
+}

@@ -1,0 +1,88 @@
+/**
+* blog style 1
+*/
+@use '../abstracts/mixins' as *;
+@use '../abstracts/variables' as *;
+.sasup-blog {
+    &-box {
+        &-meta-4 {
+            border-top: 1px solid rgba(19, 15, 64, 0.08);
+            padding-top: 15px;
+            margin-top: 25px;
+            margin-bottom: -9px;
+            & span {
+                font-family: $roboto;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 16px;
+                display: inline-block;
+                color: var(--clr-body-gray);
+                &:not(:last-child) {
+                    margin-right: 20px;
+                    position: relative;
+                    &::after {
+                        position: absolute;
+                        right: -12px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: 1px;
+                        content: "";
+                        background-color: var(--clr-body-gray-2);
+                        height: 12px;
+                    }
+                }
+            }
+        }
+        &-title-4 {
+            font-family: $space;
+            font-weight: 700;
+            font-size: 26px;
+            line-height: 33px;
+            margin-bottom: 0;
+            letter-spacing: -0.04em;
+            color: var(--clr-common-black-2);
+            & a {
+                text-decoration: none;
+                &:hover {
+                    color: var(--clr-theme-1);
+                };
+            }
+        }
+        &-category-4 {
+            display: inline-block;
+            background: rgba(106, 85, 255, 0.08);
+            border-radius: 4px;
+            height: 25px;
+            line-height: 25px;
+            padding: 0 13px;
+            font-family: 'Roboto';
+            font-weight: 500;
+            font-size: 13px;
+            color: var(--clr-theme-4);
+            text-decoration: none;
+            &:hover {
+                background-color: var(--clr-theme-4);
+                color: var(--clr-common-white);
+            }
+        }
+        &-4 {
+            background: var(--clr-common-white);
+            border: 1.5px solid rgba(19, 15, 64, 0.08);
+            box-sizing: border-box;
+            padding: 23px;
+            border-radius: 10px;
+        }
+        &-img-4 {
+            border-radius: 10px;
+            overflow: hidden;
+            & img {
+                @include transition(.3s);
+            }
+            &:hover {
+                & img {
+                    transform: scale(1.1);
+                }
+            }
+        }
+    }
+}
