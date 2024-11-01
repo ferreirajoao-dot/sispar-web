@@ -6,7 +6,8 @@ import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 import {ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import {useRouter} from "next/navigation";
-import api, { access } from "@/functions/api";
+import api, { access } from "@/services/api";
+import FormBuilderProvider from "@/libs/builder/form-builder/form-builder-provider";
 
 export const ContextApplication = createContext();
 export const ContextUser = createContext();
@@ -116,12 +117,14 @@ export default function Providers({children, session, application, token}) {
 
             <ContextApplication.Provider value={applicationData}>
                 <ContextUser.Provider value={{updateUser, refetchUser, user, logout, login}}>
-                    <QueryClientProvider client={queryClient}>
-                        {children}
+                    <FormBuilderProvider>
+                        <QueryClientProvider client={queryClient}>
+                            {children}
 
-                        <ReactQueryDevtools initialIsOpen={false} />
-                        <ToastContainer />
-                    </QueryClientProvider>
+                            <ReactQueryDevtools initialIsOpen={false} />
+                            <ToastContainer />
+                        </QueryClientProvider>
+                    </FormBuilderProvider>
                 </ContextUser.Provider>
             </ContextApplication.Provider>
 
