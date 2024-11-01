@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image"
 import Link from "next/link"
 import {useEffect} from "react";
@@ -6,21 +8,30 @@ import {usePathname} from "next/navigation";
 const Header = () => {
     const pathname = usePathname();
 
-    useEffect(() => {
-        const headerSticky = document.querySelector('.header-sticky');
+    const handleScroll = () => {
+        const scroll = window.scrollY;
 
-        const handleScroll = () => {
-            const scroll = window.scrollY;
-
-            if (scroll < 245) {
-                headerSticky.classList.remove('sticky');
-            } else if (scroll > 260 && scroll < 500){
-                headerSticky.classList.add('sticky');
-            }
-        };
-        if (pathname !== "/") {
-            headerSticky.classList.add('sticky');
+        if (scroll < 245) {
+            onChangeSticky("remove")
+        } else if ((scroll > 260 && scroll < 500) || pathname !== "/"){
+            onChangeSticky("add")
         }
+
+    };
+
+
+    const onChangeSticky = (action) => {
+        const headerSticky = document.querySelector('.header-sticky');
+        headerSticky.classList[action]('sticky');
+    }
+
+    const onChangeHtmlHeaderSticky = (value) => {
+        const element = document.querySelector('[data-kt-app-header-sticky]');
+        if (element) {
+            element.setAttribute('data-kt-app-header-sticky', value);
+        }
+    }
+    useEffect(() => {
 
         window.addEventListener('scroll', handleScroll);
 
@@ -29,18 +40,30 @@ const Header = () => {
         };
     }, []);
 
+
+    useEffect(() => {
+
+        if (pathname === "/") {
+            onChangeHtmlHeaderSticky("off");
+            onChangeSticky('remove');
+        } else {
+            onChangeHtmlHeaderSticky("on");
+            onChangeSticky('add');
+        }
+
+    }, [pathname]);
     return (
-        <header className="header-transparent sasup-header-style-5 header-sticky">
+        <header className={`header-transparent sasup-header-style-5 header-sticky ${pathname !== "/" ? "sticky" : ""}`}>
             <div className="header-main">
                 <div className="container">
                     <div className="row align-items-center justify-content-between">
                         <div className="col-xxl-3 col-xl-3 col-lg-3 col-md-4 col-6">
                             <div className="sasup-logo mr-35 d-inline-block">
-                                <Link href="#" className="logo-1">
+                                <Link href="/" className="logo-1">
                                     <h3 className={"mb-0 text-white"}>SISPAR</h3>
                                     {/*<Image src="" alt="image not found"/>*/}
                                 </Link>
-                                <Link href="#" className="logo-2">
+                                <Link href="/" className="logo-2">
                                     <h3 className={"mb-0"}>SISPAR</h3>
                                     {/*<Image src="" alt="image not found"/>*/}
                                 </Link>
@@ -84,15 +107,13 @@ const Header = () => {
                         </div>
                         <div className="col-xxl-3 col-xl-3 col-lg-3 col-md-8 col-6">
                             <div className="sasup-header-action-5 text-end">
-                                <a href="sign-in.html" className="sasup-login-btn-5">
-                                    <i className="fal fa-user"/> Log in
-                                </a>
-                                <a
-                                    href="sign-up.html"
-                                    className="sasup-header-white-btn-5 header-btn"
+                                <Link href="#" className="sasup-login-btn-5">
+                                    <i className="fal fa-user"/> Login
+                                </Link>
+                                <Link href={"/registro"} className="sasup-header-white-btn-5 header-btn"
                                 >
-                                    Join Sasup
-                                </a>
+                                    Registrar
+                                </Link>
                                 <div
                                     className="mobile-bar-control mobile-bar-control-white d-inline-block d-lg-none">
                                     <div className="line"/>

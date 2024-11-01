@@ -6,8 +6,8 @@ export const metadata = {
 
 export default function page() {
     return (
-        <div>
-            SALVE! asd
+        <div className={""}>
+            <h2>REGISTRO</h2>
         </div>
     )
 }

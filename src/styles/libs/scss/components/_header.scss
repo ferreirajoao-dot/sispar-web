@@ -392,14 +392,15 @@
 }
 
 .header-main {
+    max-height: var(--bs-app-header-height);
     @include mq(md) {
-        padding: 20px 0;
+        padding: 14px 0;
     }
     @include mq(sm) {
-        padding: 20px 0;
+        padding: 10px 0;
     }
     @include mq(xs) {
-        padding: 19px 0;
+        padding: 12px 0;
     }
 }
 // mobile header

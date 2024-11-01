@@ -2,7 +2,6 @@
 
 import React, {createContext, useEffect, useRef, useState} from "react";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
-import Layout from "@/ui/layout/layout";
 import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 import {ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';

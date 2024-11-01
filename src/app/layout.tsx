@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import Layout from "@/ui/layout/layout";
+import Layout from "@/ui/layout/default-layout";
 import Script from 'next/script'
 
 import "@/styles/globals.scss";
@@ -49,7 +49,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br" data-bs-theme="light">
+    <html lang="pt-br"
+          data-bs-theme="light"
+          data-kt-app-header-fixed-mobile="true"
+          data-kt-app-toolbar-enabled="false"
+          data-kt-app-header-sticky="off"
+          className="app-default"
+    >
       <body className={`${roboto.variable} ${poppins.variable} ${spaceGrotesk.variable}`}>
         <Layout>
           {children}
