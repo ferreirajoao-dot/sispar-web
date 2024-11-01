@@ -49,7 +49,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br">
+    <html lang="pt-br" data-bs-theme="light">
       <body className={`${roboto.variable} ${poppins.variable} ${spaceGrotesk.variable}`}>
         <Layout>
           {children}
