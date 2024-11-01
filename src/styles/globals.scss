@@ -1,4 +1,4 @@
-@import "bootstrap/scss/bootstrap";
+//@import "bootstrap/scss/bootstrap";
 
 @import "libs/css/magnific-popup.css";
 @import "libs/css/meanmenu.css";
@@ -6,5 +6,26 @@
 
 @import 'libs/css/font-awesome.min.css';
 
+@import "libs/metronic/init_metronic";
+
 @import "libs/scss/main";
 
+
+h1 {
+  font-size: 60px;
+}
+h2 {
+  font-size: 45px;
+}
+h3 {
+  font-size: 38px;
+}
+h4 {
+  font-size: 28px;
+}
+h5 {
+  font-size: 20px;
+}
+h6 {
+  font-size: 16px;
+}
