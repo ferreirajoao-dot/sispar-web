@@ -3,17 +3,18 @@
 import React, {createContext, useEffect, useRef, useState} from "react";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
-import {ToastContainer} from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+
 import {useRouter} from "next/navigation";
 import api, { access } from "@/services/api";
 import FormBuilderProvider from "@/libs/builder/form-builder/form-builder-provider";
+import ToastProvider from "@/ui/providers/toast-container";
 
 export const ContextApplication = createContext();
 export const ContextUser = createContext();
 
 export default function Providers({children, session, application, token}) {
-    const router = useRouter()
+    const router = useRouter();
+
     const [queryClient] = React.useState(() => new QueryClient(
         {defaultOptions: {
                 queries: {
@@ -122,7 +123,7 @@ export default function Providers({children, session, application, token}) {
                             {children}
 
                             <ReactQueryDevtools initialIsOpen={false} />
-                            <ToastContainer />
+                            <ToastProvider/>
                         </QueryClientProvider>
                     </FormBuilderProvider>
                 </ContextUser.Provider>
