@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import Layout from "@/ui/layout/default-layout";
-import Script from 'next/script'
 
 import "@/styles/globals.scss";
 
@@ -56,7 +54,7 @@ export default function RootLayout({
           data-kt-app-header-sticky="off"
           className="app-default"
     >
-      <body className={`${roboto.variable} ${poppins.variable} ${spaceGrotesk.variable}`}>
+      <body className={`${roboto.variable} ${poppins.variable} ${spaceGrotesk.variable} app-default`}>
         <Layout>
           {children}
         </Layout>
