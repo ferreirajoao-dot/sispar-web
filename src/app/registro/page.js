@@ -1,4 +1,4 @@
-import FormBuilder from "@/libs/builder/form-builder/form-builder";
+import FormBuilder from "@/libs/builder/form-builder";
 
 export const metadata = {
     title: "Registro",
@@ -27,11 +27,12 @@ export default function page() {
             {
                 type: "number-format",
                 accessor:"cpf",
-                label: "cpf",
+                label: "CPF",
                 props: {
                     format: "###.###.###-##",
                     placeholder: "Digite aqui...",
                 },
+                col: "col-md-6"
             },
 
             {

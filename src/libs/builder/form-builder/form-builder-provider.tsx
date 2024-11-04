@@ -1,18 +1,9 @@
 import * as React from "react";
 import { useEffect, useState, ReactNode, Context } from "react";
 
-interface FormBuilderProps {
-    saveInCache: (formKey: string, values: any) => void;
-    getDataFormKey: (formKey: string) => any;
-    clear: (formKey: string) => void;
-}
+import {FormBuilderProps} from "./hooks/useFormBuilder";
 
 export const FormBuilderContext: Context<FormBuilderProps | undefined> = React.createContext<FormBuilderProps | undefined>(undefined);
-
-export const useFormBuilder = (): FormBuilderProps | undefined => {
-    const client = React.useContext(FormBuilderContext);
-    return client;
-};
 
 interface FormBuilderProviderProps {
     children: ReactNode;

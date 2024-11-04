@@ -1,0 +1,28 @@
+import React from "react";
+import NumberFormat from "react-number-format";
+
+const MaskedInput = React.memo((props: any) => {
+    const {
+        field,
+        errors,
+        config
+    } = props;
+
+    const {
+        placeholder,
+    } = config;
+
+    console.log(`Render ${config.type.toUpperCase() || "text"} ->`, field.name);
+
+    return (
+        <NumberFormat value={field?.value || ""}
+                      getInputRef={field.ref}
+                      id={field.name}
+                      onValueChange={(e) => field.onChange(e.value)}
+                      className={`form-control ${errors ? "is-invalid" : ""}`}
+                      {...config.props}
+        />
+    )
+});
+
+export default MaskedInput;

@@ -1,14 +1,12 @@
 "use client"
 
-import { useForm } from "react-hook-form";
-import React, { Fragment, useEffect, useMemo } from "react";
+import {Controller, useForm} from "react-hook-form";
+import React, {  useEffect} from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import PropTypes from "prop-types";
 
-import FbConditionalWrapper from "./components/fb-conditional-wrapper";
-import FbFields from ".//components/fb-fields";
-import { useFormBuilder } from "./form-builder-provider";
-import _ from "lodash";
+import { useFormBuilder } from "./hooks/useFormBuilder";
+import Fields from "./fields";
 
 const FormBuilder = (props) => {
 
@@ -123,81 +121,61 @@ const FormBuilder = (props) => {
         }
     }, []);
 
-    const Fields = useMemo(() => {
-        return  (
-            <>
-                {meta.fields?.map((itemField, index) => {
-                    let {
-                        labelText,
-                        item: item,
-                    } = populateMapProps(itemField)
+    const renderField = (item, controller) => {
+        const { field } = controller;
+        const errors = controller.fieldState.error;
 
-                    if (_.has(item, "showField")) {
-                        if (!item.showField) {
-                            return null
-                        }
-                    }
-
-                    if (itemField) {
-                        if (item.type === "submit") {
-                            return (
-                                <div key={index}
-                                     className={(item.col ? item.col : "col") + " " + `d-flex justify-content-${item?.justify || "end"}`}>
-                                    <button disabled={isSubmitting} className={"btn btn-primary"} type={"submit"}>
-                                        {(isSubmitting) ?
-                                            <div className={"d-flex flex-center gap-4"}>
-                                                <div className="spinner-border spinner-border-sm" role="status"></div>
-                                                <span>{item?.labelLoading || "Salvando..."}</span>
-                                            </div> :
-                                            <>
-                                                {/*A PROP SE CHAMA LABEL ou TEXT*/}
-                                                {labelText}
-                                            </>
-                                        }
-                                    </button>
-                                </div>
-                            )
-                        }
-
-                        if (item.type !== "hidden") return (
-                            <div key={index}
-                                 className={`${item?.col ? item.col : (meta?.col ? meta.col : "col-md-6")}` + ` ${item?.layout === "horizontal" ? "d-flex gap-3" : ""}`}>
-                                <FbConditionalWrapper isParents={item?.parents?.fields?.length > 0}>
-
-                                    <FbFields {...populateMapProps(itemField)}/>
-
-
-                                    {item?.parents?.fields?.length > 0 &&
-                                        <section className={"row gy-3"}>
-                                            {item.parents?.fields?.map((parent, parentIndex) => {
-                                                return <React.Fragment key={parentIndex}>
-                                                    <div
-                                                        className={parent?.col ? parent.col : (meta?.col ? meta.col : "col-12")}>
-                                                        <FbFields {...populateMapProps(parent)} item={parent}/>
-                                                    </div>
-
-                                                </React.Fragment>
-
-                                            })}
-                                        </section>
-
-                                    }
-                                </FbConditionalWrapper>
-                            </div>
-                        )
-                    }
-                })}
-            </>
-
-        )
-    }, [meta]);
+        const fieldProps = {
+            config: item,
+            field,
+            errors,
+        }
+        switch (item.type) {
+            case "text":
+            case "email":
+                return <Fields.Input {...fieldProps}/>;
+            case "textarea":
+                return <Fields.Textarea {...fieldProps}/>;
+            case "number-format":
+                return <Fields.MaskedInput {...fieldProps}/>;
+            case "select":
+                return <Fields.Select {...fieldProps}/>;
+            case "checkbox":
+                return <Fields.Checkbox {...fieldProps}/>;
+            case "submit":
+                return <Fields.ButtonSubmit {...fieldProps} {...isSubmitting}/>;
+            case "custom":
+                return item.render(field);
+            default:
+                return null;
+        }
+    };
 
     return (
         <form onSubmit={handleSubmit(onSubmit, onError)}
               id={idForm || formKey || ""}
               className={`row ${meta.gutter || "gy-3"}`}
         >
-            {Fields}
+            {meta.fields?.map((item, index) => {
+                const accessor = item.accessor;
+                return (
+                    <Controller name={accessor}
+                                key={index}
+                                control={control}
+                                render={(controller) => (
+                                    <div className={`${item.col || meta?.col || "col-md-6"}`}>
+                                        {item.label &&
+                                            <label className={"form-label"} htmlFor={controller.field.name}>
+                                                {item.label}
+                                            </label>
+                                        }
+
+                                        {renderField(item, controller)}
+                                    </div>
+                                )}
+                    />
+                )
+            })}
         </form>
 
     )
@@ -210,7 +188,6 @@ FormBuilder.propTypes = {
     isLoading: PropTypes.bool,
     defaultValues: PropTypes.object,
     clearCacheUnmount: PropTypes.bool,
-    formKey: PropTypes.string,
     idForm: PropTypes.string,
 }
 
