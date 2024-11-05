@@ -22,15 +22,15 @@ $white: #ffffff !default;
 $black:#000000 !default;
 
 // Bootstrap grey colors
-$gray-100: #F9F9F9 !default;
-$gray-200: #F1F1F4 !default;
-$gray-300: #DBDFE9 !default;
-$gray-400: #C4CADA !default;
-$gray-500: #99A1B7 !default;
-$gray-600: #78829D !default;
-$gray-700: #4B5675 !default;
-$gray-800: #252F4A !default;
-$gray-900: #071437 !default;
+$gray-100: #f3f4f6 !default;
+$gray-200: #e5e7eb !default;
+$gray-300: #d1d5db !default;
+$gray-400: #9ca3af !default;
+$gray-500: #6b7280 !default;
+$gray-600: #4b5563 !default;
+$gray-700: #374151 !default;
+$gray-800: #1f2937 !default;
+$gray-900: #111827 !default;
 
 // Bootstrap muted color
 $text-muted: $gray-700 !default;
@@ -505,7 +505,7 @@ $table-loading-message-color:               var(--#{$prefix}gray-700) !default;
 // Buttons + Forms
 //
 // Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
-$input-btn-padding-y:                       .775rem !default;
+$input-btn-padding-y:                       .5rem !default;
 $input-btn-padding-x:                       1rem !default;
 $input-btn-font-family:                     null !default;
 $input-btn-font-size:                       $font-size-base * 1.1 !default;
@@ -531,7 +531,7 @@ $input-btn-border-width:                    $border-width !default;
 //
 // For each of Bootstrap's buttons, define text, background, and border color.
 $btn-padding-y:                             $input-btn-padding-y !default;
-$btn-padding-x:                             1.5rem !default;
+$btn-padding-x:                             1.225rem !default;
 $btn-font-family:                           $input-btn-font-family !default;
 $btn-font-size:                             $input-btn-font-size !default;
 $btn-line-height:                           $input-btn-line-height !default;
