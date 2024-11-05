@@ -52,6 +52,10 @@ const FormBuilder = (props) => {
         }
     }
 
+    const onError = () => {
+
+    }
+
     const renderField = (item, controller) => {
         const { field } = controller;
         const errors = controller.fieldState.error;
