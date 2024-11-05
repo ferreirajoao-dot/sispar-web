@@ -1,12 +1,12 @@
 "use client"
 
 import {Controller, useForm} from "react-hook-form";
-import React, {useEffect} from "react";
+import React, {useCallback, useEffect, useMemo} from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
-import PropTypes from "prop-types";
 
 import { useFormBuilder } from "./hooks/useFormBuilder";
 import Fields from "./fields";
+import {FormBuilderContext} from "./form-builder-provider";
 
 const FormBuilder = (props) => {
 
@@ -33,13 +33,7 @@ const FormBuilder = (props) => {
         defaultValues: defaultValues,
     });
 
-    const formClient = useFormBuilder();
-
-
     const onSubmit = async(args) => {
-        if (props.debug) {
-            return 0
-        }
         if (props.onSubmit) {
             try {
                 meta.fields.forEach((item) => {
@@ -57,68 +51,6 @@ const FormBuilder = (props) => {
         } else {
         }
     }
-
-    const onError = (err) => {
-    }
-
-    const populateMapProps = (item) => {
-        let accessor = item.accessor;
-
-        //label - pode ser uma string ou objeto {text?:string, label:string, className:string}
-        let labelText =  item?.label?.text || item?.label
-        let labelSubText =  item?.label?.subText
-        let labelClassName =  item?.label?.className
-
-        let inputHelperText = item?.helperText
-
-        return {
-            accessor,
-            labelText,
-            labelSubText,
-            labelClassName,
-            inputHelperText,
-            control,
-            isLoading,
-            errors,
-            setValue,
-            defaultValues,
-            reset,
-            watch,
-            item: item,
-        }
-    }
-
-    const cacheForm = (formValues) => {
-        let payload = {
-            watch: formValues,
-            reset: reset,
-            errors: errors,
-            submit: handleSubmit(onSubmit, onError),
-            setValue
-        }
-        formClient.saveInCache(props?.id, payload)
-    }
-
-    useEffect(() => {
-
-        const subscription = watch((formValues) => {
-            if (props?.id) {
-                cacheForm(formValues)
-            }
-
-        });
-        return () => subscription.unsubscribe(); // Cleanup on unmount
-    }, [watch, meta]);
-
-    useEffect(() => {
-
-        if (props?.id) {
-            cacheForm(watch())
-            if (clearCacheUnmount) {
-                return () => formClient.clear(`${props?.id}`)
-            }
-        }
-    }, []);
 
     const renderField = (item, controller) => {
         const { field } = controller;
@@ -142,7 +74,22 @@ const FormBuilder = (props) => {
             case "checkbox":
                 return <Fields.Checkbox {...fieldProps}/>;
             case "submit":
-                return <Fields.ButtonSubmit {...fieldProps} {...isSubmitting}/>;
+                return <Fields.ButtonSubmit {...fieldProps}
+                                            isSubmitting={isSubmitting}
+                />;
+
+            //BR FIELDS
+            case "cnpj":
+            case "cpf":
+                return <Fields.MaskedInput {...fieldProps}
+                                           config={{
+                                               ...item,
+                                               props: {
+                                                   ...item?.props,
+                                                   format: item.type === "cnpj" ? "##.###.###/####-##" : "###.###.###-##",
+                                               }
+                                           }}
+                />;
             case "custom":
                 return item.render(field);
             default:
@@ -150,43 +97,45 @@ const FormBuilder = (props) => {
         }
     };
 
+    const RenderControllerFields = useMemo(() => {
+
+        console.log("RenderController")
+        return (
+            <>
+                {meta.fields?.map((item, index) => {
+                    const accessor = item.accessor || "";
+
+                    return (
+                        <Controller name={accessor}
+                                    key={index}
+                                    control={control}
+                                    render={(controller) => (
+                                        <div className={`${item.col || meta?.col || "col-md-6"}`}>
+                                            {item.label &&
+                                                <label className={"form-label"} htmlFor={controller.field.name}>
+                                                    {item.label}
+                                                </label>
+                                            }
+
+                                            {renderField(item, controller)}
+                                        </div>
+                                    )}
+                        />
+                    )
+                })}
+            </>
+        )
+    }, [meta]);
+    
     return (
         <form onSubmit={handleSubmit(onSubmit, onError)}
               id={id}
               className={`row ${meta.gutter || "gy-3"}`}
         >
-            {meta.fields?.map((item, index) => {
-                const accessor = item.accessor;
-                return (
-                    <Controller name={accessor}
-                                key={index}
-                                control={control}
-                                render={(controller) => (
-                                    <div className={`${item.col || meta?.col || "col-md-6"}`}>
-                                        {item.label &&
-                                            <label className={"form-label"} htmlFor={controller.field.name}>
-                                                {item.label}
-                                            </label>
-                                        }
-
-                                        {renderField(item, controller)}
-                                    </div>
-                                )}
-                    />
-                )
-            })}
+            {RenderControllerFields}
         </form>
 
     )
 }
-export default FormBuilder
-
-FormBuilder.propTypes = {
-    disableFormTag: PropTypes.bool,
-    hookForm: PropTypes.object,
-    isLoading: PropTypes.bool,
-    defaultValues: PropTypes.object,
-    clearCacheUnmount: PropTypes.bool,
-    idForm: PropTypes.string,
-}
+export default React.memo(FormBuilder)
 

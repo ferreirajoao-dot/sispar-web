@@ -12,25 +12,25 @@ interface FormBuilderProviderProps {
 export default function FormBuilderProvider({ children }: FormBuilderProviderProps) {
     const [cachedForms, setCachedForms] = useState<{ [key: string]: any }>({});
 
-    const getDataFormKey = (formKey: string): any => {
-        if (formKey) {
-            if (cachedForms[formKey]) {
-                return cachedForms[formKey];
+    const getFormId = (id: string): any => {
+        if (id) {
+            if (cachedForms[id]) {
+                return cachedForms[id];
             }
         }
-        return {};
+        return null;
     };
 
-    const saveInCache = (formKey: string, values: any): void => {
-        setCachedForms((prevForms) => ({ ...prevForms, [formKey]: values }));
+    const onSaveInCache = (id: string, values: any): void => {
+        setCachedForms((prevForms) => ({ ...prevForms, [id]: values }));
     };
 
-    const clear = (formKey: string): void => {
-        if (formKey) {
+    const onClearCache = (id: string): void => {
+        if (id) {
             setCachedForms((prevForms) => {
                 const updatedForms = { ...prevForms };
-                if (updatedForms[formKey]) {
-                    delete updatedForms[formKey];
+                if (updatedForms[id]) {
+                    delete updatedForms[id];
                 }
                 return updatedForms;
             });
@@ -38,7 +38,7 @@ export default function FormBuilderProvider({ children }: FormBuilderProviderPro
     };
 
     return (
-        <FormBuilderContext.Provider value={{ saveInCache, getDataFormKey, clear }}>
+        <FormBuilderContext.Provider value={{ onSaveInCache, onClearCache, getFormId }}>
             {children}
         </FormBuilderContext.Provider>
     );

@@ -1,15 +1,17 @@
 "use client";
-
 import * as React from "react";
-import {FormBuilderContext} from "@/libs/builder/form-builder/form-builder-provider";
+import { FormBuilderContext } from "../form-builder-provider";
 
 export interface FormBuilderProps {
-    saveInCache: (formKey: string, values: any) => void;
-    getDataFormKey: (formKey: string) => any;
-    clear: (formKey: string) => void;
+    onSaveInCache?: (id: string, values: any) => void;
+    onClearCache?: (id: string) => void;
+    getFormId?: (id: string) => any;
 }
 
-export const useFormBuilder = (): FormBuilderProps | undefined => {
+export const useFormBuilder = (id?: string): FormBuilderProps  => {
     const client = React.useContext(FormBuilderContext);
+    if (!client) {
+        throw new Error("useFormBuilder must be used within a FormBuilderProvider");
+    }
     return client;
 };
