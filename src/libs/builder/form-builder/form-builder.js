@@ -1,7 +1,7 @@
 "use client"
 
 import {Controller, useForm} from "react-hook-form";
-import React, {  useEffect} from "react";
+import React, {useEffect} from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import PropTypes from "prop-types";
 
@@ -13,8 +13,7 @@ const FormBuilder = (props) => {
     const {
         meta,
         isLoading,
-        idForm,
-        formKey,
+        id,
         defaultValues,
         clearCacheUnmount = true,
     } = props;
@@ -97,13 +96,13 @@ const FormBuilder = (props) => {
             submit: handleSubmit(onSubmit, onError),
             setValue
         }
-        formClient.saveInCache(props?.formKey, payload)
+        formClient.saveInCache(props?.id, payload)
     }
 
     useEffect(() => {
 
         const subscription = watch((formValues) => {
-            if (props?.formKey) {
+            if (props?.id) {
                 cacheForm(formValues)
             }
 
@@ -113,10 +112,10 @@ const FormBuilder = (props) => {
 
     useEffect(() => {
 
-        if (props?.formKey) {
+        if (props?.id) {
             cacheForm(watch())
             if (clearCacheUnmount) {
-                return () => formClient.clear(`${props?.formKey}`)
+                return () => formClient.clear(`${props?.id}`)
             }
         }
     }, []);
@@ -153,7 +152,7 @@ const FormBuilder = (props) => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit, onError)}
-              id={idForm || formKey || ""}
+              id={id}
               className={`row ${meta.gutter || "gy-3"}`}
         >
             {meta.fields?.map((item, index) => {
