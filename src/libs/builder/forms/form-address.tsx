@@ -1,3 +1,5 @@
+"use client";
+
 import React, {forwardRef, useImperativeHandle, useRef, useState} from 'react';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
