@@ -52,7 +52,6 @@ export default function RootLayout({
           data-kt-app-header-fixed-mobile="true"
           data-kt-app-toolbar-enabled="false"
           data-kt-app-header-sticky="off"
-          className="app-default"
     >
       <body className={`${roboto.variable} ${poppins.variable} ${spaceGrotesk.variable} app-default`}>
         <Layout>

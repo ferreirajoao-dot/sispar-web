@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from "react";
-// import {KTIcon} from "@/ui/components/ts/KTIcon";
+import {KTIcon} from "@/libs/KTIcon/KTIcon";
 
 interface MetaProps {
     title?: string;
@@ -99,8 +99,7 @@ export default function WizardBuilder(props: WizardBuilderProps) {
                                             {(lastPosition !== key) &&
                                                 <>
                                                     <div className="stepper-line d-none d-md-block h-40px"/>
-                                                    ICON
-                                                    {/*<KTIcon iconName={"right"} className={"d-md-none"} size={"3hx"}/>*/}
+                                                    <KTIcon name={"right"} className={"d-md-none"} type={"solid"}/>
                                                 </>
                                             }
                                         </div>

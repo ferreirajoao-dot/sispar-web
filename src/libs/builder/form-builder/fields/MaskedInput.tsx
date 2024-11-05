@@ -20,6 +20,7 @@ const MaskedInput = React.memo((props: any) => {
                       id={field.name}
                       onValueChange={(e) => field.onChange(e.value)}
                       className={`form-control ${errors ? "is-invalid" : ""}`}
+                      placeholder={placeholder || ""}
                       {...config.props}
         />
     )

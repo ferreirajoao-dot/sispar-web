@@ -1,56 +1,61 @@
+"use client";
+
 import FormBuilder from "@/libs/builder/form-builder";
+import WizardBuilder from "@/libs/builder/wizard-builder/wizard-builder";
+import RegisterDataEntity from "@/app/registro/wizard-register/register-data-entity";
+import {useRouter} from "next/navigation";
 
-export const metadata = {
-    title: "Registro",
-    description: "",
-}
 
-export default function page() {
+export default function Page() {
 
-    const meta = {
-        col: "col-12",
-        fields: [
-            {
-                type: "text",
-                accessor: "business_name",
-                label: "Nome da empresa",
-                placeholder: "Nome fantasia",
-                col: "col-md-6"
-            },
-            {
-                type: "text",
-                accessor: "employer_name",
-                label: "Razão Social",
-                placeholder: "Nome fantasia",
-                col: "col-md-6"
-            },
-            {
-                type: "number-format",
-                accessor:"cpf",
-                label: "CPF",
-                props: {
-                    format: "###.###.###-##",
-                    placeholder: "Digite aqui...",
-                },
-                col: "col-md-6"
-            },
+    const router = useRouter();
+    const onSubmit = async (args) => {
+        const payload = {
+            ...args,
+            payment_installment: 1,
+            status: 'VALIDATION',
+        }
+        console.log(payload)
+        try {
+            const res = await api.post("club/order-request", payload, {isClub:true})
 
-            {
-                type: "checkbox",
-                accessor: "company_size",
-                checkboxStyle: "dashed",
-                loadingException: true,
-                label:"Porte da empresa",
-                options: [{label:"teste", value: 1}],
-            },
-        ],
+            router.push("/painel/cliente/minhas-demandas")
+
+        } catch (e) {
+            console.log("salve", e)
+        }
+        // controller.actions.next();
     }
 
+    const meta = [
+        {
+            title: "Dados da entidade",
+            description: "Dados sobre a ONG",
+            element: (e) => <RegisterDataEntity controller={e}/>,
+        },
+        {
+            title: "Estatuto",
+        },
+        {
+            title: "Representante da Entidade",
+        },
+        {
+            title: "Registros",
+        },
+        {
+            title: "Missão e Outros",
+        },
+        {
+            title: "Área de Atuação",
+        },
+    ]
+
+
     return (
-        <div className={"mt-15"}>
-            <div className={"container"}>
-                <FormBuilder meta={meta}/>
-            </div>
+        <div className={"container"}>
+           <div className={"mt-15"}>
+               <WizardBuilder meta={meta}/>
+           </div>
         </div>
-    )
+    );
 }

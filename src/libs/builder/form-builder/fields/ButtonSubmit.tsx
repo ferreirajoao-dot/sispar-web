@@ -1,19 +1,27 @@
 import React from "react"
 
-interface ButtonSubmitProps {
-    isSubmitting?: boolean,
-    col: string,
-    text: string,
-    textLoading: string,
+interface ConfigProps {
+    col?: string;
+    textLoading?: string;
+    text: string;
 }
 
-const ButtonSubmit = React.memo((props: ButtonSubmitProps) => {
+interface ButtonSubmitProps {
+    isSubmitting?: boolean;
+    config: ConfigProps;
+}
+
+const ButtonSubmit = (props: ButtonSubmitProps) => {
     const {
         isSubmitting,
+        config
+    } = props
+
+    const {
         col,
         text,
         textLoading,
-    } = props
+    } = config;
 
 
     return (
@@ -29,6 +37,6 @@ const ButtonSubmit = React.memo((props: ButtonSubmitProps) => {
             </button>
         </div>
     )
-})
+}
 
 export default ButtonSubmit
