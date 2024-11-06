@@ -23,10 +23,9 @@ const KTIcon: FC<KTIconProps> = (props) => {
     className = '',
     type = "duotone",
     name,
-    size = "2"
   } = props
   return (
-    <i style={{...style}} className={`ki-${type}  ki-${name}${className && ' ' + className} fs-${size}`}>
+    <i style={{...style}} className={`ki-${type}  ki-${name}${className && ' ' + className} `}>
       {type === 'duotone' &&
         [...Array(iconsDuotone[name.trim()])].map((_e, i) => {
           return (
