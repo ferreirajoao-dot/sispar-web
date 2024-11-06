@@ -376,7 +376,7 @@ $font-size-sm: $font-size-base * .95 !default;   // 12.025px
 
 $font-weight-lighter: lighter !default;
 $font-weight-light: 300 !default;
-$font-weight-normal: 500 !default;
+$font-weight-normal: 400 !default;
 $font-weight-semibold: 500 !default;
 $font-weight-bold: 600 !default;
 $font-weight-bolder: 700 !default;
@@ -393,12 +393,20 @@ $line-height-xl: 2 !default;
 $line-height-xxl: 2.25 !default;
 
 // Heading sizes
-$h1-font-size:  $font-size-base * 1.75 !default; // 22.75px
-$h2-font-size:  $font-size-base * 1.5 !default; // 19.50px
-$h3-font-size:  $font-size-base * 1.35 !default; // 17.55px
-$h4-font-size:  $font-size-base * 1.25 !default; // 16.25px
-$h5-font-size:  $font-size-base * 1.15 !default; // 14.95px
-$h6-font-size:  $font-size-base * 1.075 !default; // 13.97px
+//$h1-font-size:  $font-size-base * 1.75 !default; // 22.75px
+//$h2-font-size:  $font-size-base * 1.5 !default; // 19.50px
+//$h3-font-size:  $font-size-base * 1.35 !default; // 17.55px
+//$h4-font-size:  $font-size-base * 1.25 !default; // 16.25px
+//$h5-font-size:  $font-size-base * 1.15 !default; // 14.95px
+//$h6-font-size:  $font-size-base * 1.075 !default; // 13.97px
+
+//CUSTOM
+$h1-font-size:  $font-size-base * 3.25 !default;
+$h2-font-size:  $font-size-base * 2.75 !default;
+$h3-font-size:  $font-size-base * 2.25 !default;
+$h4-font-size:  $font-size-base * 1.75 !default;
+$h5-font-size:  $font-size-base * 1.25 !default;
+$h6-font-size:  $font-size-base * 1 !default;
 
 // Font Sizes
 $font-sizes: (
@@ -421,35 +429,15 @@ $font-sizes: (
 
 	fluid: 100%, // 100%
 
-	2x: $font-size-base * 2,  // 26px
-	2qx: $font-size-base * 2.25, // 29.25px
-	2hx: $font-size-base * 2.5,  // 32.5px
-	2tx: $font-size-base * 2.75, // 35.75px
+	2x: $font-size-base * 4,  // 26px
+	2qx: $font-size-base * 4.25, // 29.25px
+	2hx: $font-size-base * 4.5,  // 32.5px
+	2tx: $font-size-base * 4.75, // 35.75px
 
-	3x: $font-size-base * 3,  // 39px
-	3qx: $font-size-base * 3.25, // 42.25px
-	3hx: $font-size-base * 3.5,  // 45.5px
-	3tx: $font-size-base * 3.75, // 48.75px
-
-	4x: $font-size-base * 4,  // 52px
-	4qx: $font-size-base * 4.25, // 55.25px
-	4hx: $font-size-base * 4.5,  // 58.5px
-	4tx: $font-size-base * 4.75, // 61.75px
-
-	5x: $font-size-base * 5,  // 65px
-	5qx: $font-size-base * 5.25, // 68.25px
-	5hx: $font-size-base * 5.5,  // 71.5px
-	5tx: $font-size-base * 5.75,  // 74.75px
-
-	6x: $font-size-base * 6,  // 75px
-	6qx: $font-size-base * 6.25, // 78.25px
-	6hx: $font-size-base * 6.5,  // 81.5px
-	6tx: $font-size-base * 6.75,  // 84.75px
-
-	7x: $font-size-base * 7,  // 85px
-	7qx: $font-size-base * 7.25, // 88.25px
-	7hx: $font-size-base * 7.5,  // 91.5px
-	7tx: $font-size-base * 7.75  // 94.75px
+	3x: $font-size-base * 5,  // 39px
+	3qx: $font-size-base * 5.25, // 42.25px
+	3hx: $font-size-base * 5.5,  // 45.5px
+	3tx: $font-size-base * 5.75, // 48.75px
 ) !default;
 
 $headings-font-weight: 			600 !default;
