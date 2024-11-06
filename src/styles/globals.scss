@@ -5,28 +5,41 @@
 @import "libs/css/odometer-theme-default.css";
 
 @import 'libs/css/font-awesome.min.css';
-
+@import "bootstrap-icons";
 @import "libs/metronic/init_metronic";
 @import "libs/scss/main";
 
 @import "scss/skeleton";
 
+.border-bottom-all {
+  li {
+    border-bottom: $border-width solid $border-color;
+    padding-bottom: 10px;
 
-h1 {
-  font-size: 60px;
+    &:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+  }
 }
-h2 {
-  font-size: 45px;
+
+
+.limit-rows {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
-h3 {
-  font-size: 38px;
+.clamp-1 {
+  -webkit-line-clamp:1;
 }
-h4 {
-  font-size: 28px;
+
+.clamp-2 {
+  -webkit-line-clamp:2;
 }
-h5 {
-  font-size: 20px;
+.clamp-3 {
+  -webkit-line-clamp:3;
 }
-h6 {
-  font-size: 16px;
+
+.clamp-4 {
+  -webkit-line-clamp:4;
 }
