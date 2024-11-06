@@ -32,6 +32,7 @@ import feature_outside_shape_4 from "@images/shape/feature_outside_shape_4.webp"
 import feature_outside_shape_5 from "@images/shape/feature_outside_shape_5.webp"
 
 import shape_feature from "@images/shape/shape_feature.webp"
+import "@/styles/home.scss";
 
 export default function Home() {
     return (
