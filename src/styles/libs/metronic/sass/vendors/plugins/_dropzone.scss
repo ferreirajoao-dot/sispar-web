@@ -186,3 +186,29 @@
         }
     }
 }
+
+.trash-icon {
+    .icon {
+        background-color: var(--#{$prefix}gray-300);
+
+        transition: .2s ease-out;
+        width: 40px;
+        height: 40px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        border: 1px solid transparent;
+        i {
+            color: var(--#{$prefix}gray-700) !important;
+        }
+    }
+    &:hover {
+        .icon {
+            background-color: var(--#{$prefix}danger);
+            border-color: transparent;
+            color: var(--#{$prefix}danger-inverse) !important;
+        }
+    }
+}
