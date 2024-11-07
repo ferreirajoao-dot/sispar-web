@@ -60,10 +60,7 @@
 		.btn.btn-light-#{$name} {
 			$color: var(--#{$prefix}#{$name});
 			$icon-color: var(--#{$prefix}#{$name});
-			@if $name == 'secondary' {
-					$color: var(--#{$prefix}#{$name}-inverse);
-					$icon-color: var(--#{$prefix}#{$name}-inverse);
-			}
+
 
 			$border-color: var(--#{$prefix}#{$name}-light);
 			$bg-color: var(--#{$prefix}#{$name}-light);
@@ -314,11 +311,7 @@
 		$bg-color-active: get($value, base);
 		$border-color-active: get($value, base);
 
-		@if $name == 'secondary' {
-			color: var(--#{$prefix}#{$name}-inverse);
-		} @else {
-			color: var(--#{$prefix}#{$name});
-		}
+		color: var(--#{$prefix}#{$name});
 
 		@include button-custom-variant($color, $icon-color, $border-color, $bg-color, $color-active, $icon-color-active, $border-color-active, $bg-color-active);
 	}
