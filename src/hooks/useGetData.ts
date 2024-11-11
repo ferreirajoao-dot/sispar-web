@@ -3,8 +3,6 @@
 import {keepPreviousData as keep, useQuery, useQueryClient} from "@tanstack/react-query";
 import api  from "@/services/api";
 import {usePathname, useRouter} from "next/navigation";
-// @ts-ignore
-// import {objectToQueryString} from "@/helpers/helpers";
 
 interface GetDataOptionsProps {
     url: string;
@@ -20,7 +18,7 @@ interface GetDataOptionsProps {
 }
 
 interface MyQueryOptionsProps {
-    queryKey: Array<string>;
+    queryKey: Array<string | number | boolean | object>;
     queryFn: () => Promise<any>;
     placeholderData?: any;
     enabled?: boolean;
@@ -62,8 +60,8 @@ export const useGetData = (options: GetDataOptionsProps) => {
                 if (aux) {
                     if (keepOriginalResponse) {
                         customResponse = {
-                            ...response,
-                            custom: aux
+                            original_response: response,
+                            custom_data: aux
                         }
                     } else {
                         customResponse = aux
@@ -84,19 +82,24 @@ export const useGetData = (options: GetDataOptionsProps) => {
         }
     };
 
+    const processInitialDataFn = () => {
+        if (initialFn && serverData) {
+            const returnedValue = initialFn(serverData);
+            if (returnedValue) {
+                return keepOriginalResponse
+                    ? { original_response: serverData, custom_data: returnedValue }
+                    : returnedValue;
+            }
+        }
+        return serverData;
+    };
+
     const queryOptions: MyQueryOptionsProps = {
         queryKey: queryKey,
         queryFn: getDataFn,
         placeholderData: keepPreviousData ? keep : undefined,
         enabled: enabled === null ? true : enabled,
-        ...(serverData ? { initialData: initialFn ? () => {
-            let aux =  initialFn(serverData)
-            if (aux) {
-                return aux
-            } else {
-                return serverData
-            }
-        } : serverData } : {}),
+        ...(serverData ? { initialData: initialFn ? () => processInitialDataFn() : serverData } : {}),
     };
 
     const queryResult = useQuery(queryOptions);
