@@ -31,14 +31,14 @@ const Header = () => {
             element.setAttribute('data-kt-app-header-sticky', value);
         }
     }
-    useEffect(() => {
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
+    // useEffect(() => {
+    //
+    //     window.addEventListener('scroll', handleScroll);
+    //
+    //     return () => {
+    //         window.removeEventListener('scroll', handleScroll);
+    //     };
+    // }, []);
 
 
     useEffect(() => {
@@ -47,6 +47,7 @@ const Header = () => {
             onChangeHtmlHeaderSticky("off");
             onChangeSticky('remove');
         } else {
+            onChangeSticky("add")
             onChangeHtmlHeaderSticky("on");
         }
 
