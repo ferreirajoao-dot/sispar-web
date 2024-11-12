@@ -4,7 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import {useEffect} from "react";
 import {usePathname} from "next/navigation";
-
+import logo from '@images/logo.png'
 const Header = () => {
     const pathname = usePathname();
 
@@ -60,12 +60,10 @@ const Header = () => {
                         <div className="col-xxl-3 col-xl-3 col-lg-3 col-md-4 col-6">
                             <div className="sasup-logo mr-35 d-inline-block">
                                 <Link href="/" className="logo-1">
-                                    <h4 className={"mb-0 text-white"}>SISPAR</h4>
-                                    {/*<Image src="" alt="image not found"/>*/}
+                                    <Image src={logo} className={'h-auto mw-200px'} alt="image not found"/>
                                 </Link>
                                 <Link href="/" className="logo-2">
-                                    <h4 className={"mb-0"}>SISPAR</h4>
-                                    {/*<Image src="" alt="image not found"/>*/}
+                                    <Image src={logo} className={'h-auto'} alt="image not found"/>
                                 </Link>
                             </div>
                         </div>
