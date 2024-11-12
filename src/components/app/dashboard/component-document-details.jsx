@@ -1,8 +1,8 @@
-import ComponentSelectFile from "@/ui/components/component-select-file";
 import { AnimatePresence, motion } from "framer-motion";
 import React, {useState} from "react";
 import api from "@/services/api";
 import {useMutation} from "@tanstack/react-query";
+import ComponentSelectFile from "@/components/ui/component-select-file";
 
 export default function ComponentDocumentDetails(props) {
     const { data, color, refetch, activeStatus, isValidationStarted } = props;

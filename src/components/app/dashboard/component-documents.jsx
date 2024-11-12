@@ -5,10 +5,12 @@ import React, { useState } from "react";
 import {KTIcon} from "@/libs/KTIcon/KTIcon";
 import api from "@/services/api";
 import {useMutation} from "@tanstack/react-query";
-import ComponentDocumentDetails from "@/ui/components/component-document-details";
+import ComponentDocumentDetails from "@/components/app/dashboard/component-document-details";
+import ComponentDocumentFilter from "@/components/app/dashboard/component-document-filter";
+import ComponentDocumentApproved from "@/components/app/dashboard/component-document-approved";
+
 import _ from "lodash";
-import {ComponentDocumentFilter} from "@/ui/components/component-document-filter";
-import ComponentDocumentApproved from "@/ui/components/component-document-approved";
+
 
 const PENDING_UPLOAD = "PENDING-UPLOAD";
 const WAITING_VALIDATION = "WAITING-VALIDATION";

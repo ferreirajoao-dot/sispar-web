@@ -1,4 +1,4 @@
 import {useContext} from "react";
-import {ContextApplication} from "@/ui/layout/providers-component";
+import {ContextApplication} from "@/components/layout/providers-component";
 
 export const useApplication = () => useContext(ContextApplication);

@@ -1,7 +1,7 @@
 import React from "react";
 import {KTIcon} from "@/libs/KTIcon/KTIcon";
 
-export function ComponentDocumentFilter(props) {
+export default function ComponentDocumentFilter(props) {
     const { activeStatus, onClick, status, count, disabled } = props
     const { color, key, label, icon } = status;
 

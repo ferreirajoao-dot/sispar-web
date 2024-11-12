@@ -1,5 +1,5 @@
-import ComponentDocuments from "@/ui/components/component-documents";
-import ComponentResumeEntity from "@/ui/components/component-resume-entity";
+import ComponentDocuments from "@/components/app/dashboard/component-documents";
+import ComponentResumeEntity from "@/components/app/dashboard/component-resume-entity";
 import api from "@/services/api";
 import _ from "lodash";
 
