@@ -1,21 +1,19 @@
 "use client"
 
 import {Controller, useForm} from "react-hook-form";
-import React, {useCallback, useEffect, useMemo} from "react";
+import React from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { useFormBuilder } from "./hooks/useFormBuilder";
 import Fields from "./fields";
 import {FormBuilderContext} from "./form-builder-provider";
 
 const FormBuilder = (props) => {
 
     const {
-        meta,
+        config,
         isLoading,
         id,
         defaultValues,
-        clearCacheUnmount = true,
     } = props;
 
     const {
@@ -28,15 +26,18 @@ const FormBuilder = (props) => {
         reset,
         setValue,
         watch,
+        getValues,
     } = useForm({
-        resolver: meta.schema ? yupResolver(meta.schema) : null,
+        resolver: config?.schema ? yupResolver(config.schema) : null,
         defaultValues: defaultValues,
     });
 
-    const onSubmit = async(args) => {
-        if (props.onSubmit) {
+    const { _registerForm } = React.useContext(FormBuilderContext);
+
+    const onSubmit = React.useCallback(async (args) => {
+        if (props?.onSubmit) {
             try {
-                meta.fields.forEach((item) => {
+                config.fields.forEach((item) => {
                     if (item.ignore === true) {
                         if (item.accessor) {
                             delete args[item.accessor]
@@ -48,15 +49,11 @@ const FormBuilder = (props) => {
             } catch (e) {
 
             }
-        } else {
         }
-    }
+    }, [])
 
-    const onError = () => {
 
-    }
-
-    const renderField = (item, controller) => {
+    const RenderField = React.useCallback((item, controller) => {
         const { field } = controller;
         const errors = controller.fieldState.error;
 
@@ -99,47 +96,84 @@ const FormBuilder = (props) => {
             default:
                 return null;
         }
-    };
+    },[]);
 
-    const RenderControllerFields = useMemo(() => {
 
+
+    const RenderController = React.useMemo(() => {
         console.log("RenderController")
-        return (
-            <>
-                {meta.fields?.map((item, index) => {
-                    const accessor = item.accessor || "";
 
-                    return (
-                        <Controller name={accessor}
-                                    key={index}
-                                    control={control}
-                                    render={(controller) => (
-                                        <div className={`${item.col || meta?.col || "col-md-6"}`}>
+        return config?.fields?.map((item, index) => {
+            const accessor = item.accessor || "";
+
+            return (
+                <div className={`${item.col || config?.col || "col-md-6"}`} key={index}>
+                    <Controller name={accessor}
+                                control={control}
+                                render={(controller) => {
+                                    // console.log("CONTROLLER", accessor)
+
+                                    const isErrorField = controller.fieldState.error;
+
+                                    return (
+                                        <>
                                             {item.label &&
                                                 <label className={"form-label"} htmlFor={controller.field.name}>
                                                     {item.label}
                                                 </label>
                                             }
 
-                                            {renderField(item, controller)}
-                                        </div>
-                                    )}
-                        />
-                    )
-                })}
-            </>
-        )
-    }, [meta]);
-    
-    return (
-        <form onSubmit={handleSubmit(onSubmit, onError)}
-              id={id}
-              className={`row ${meta.gutter || "gy-3"}`}
-        >
-            {RenderControllerFields}
-        </form>
+                                            {RenderField(item, controller)}
 
+                                            {isErrorField ? <p className={"text-danger"}>{isErrorField.message}</p> : null}
+                                        </>
+                                    )
+                                }}
+                    />
+                </div>
+
+            )
+        })
+    },[config])
+
+    React.useEffect(() => {
+        if (id) {
+            let payload = {
+                watch,
+                reset,
+                errors,
+                onValidateForm: async () => {
+                    try {
+                        let isValidForm = true;
+                        const onError = () => {
+                            isValidForm = false;
+                        }
+                        await handleSubmit(onSubmit, onError)();
+
+                        if (isValidForm) {
+                            return getValues()
+                        } else {
+                            throw "Invalid Form"
+                        }
+                    } catch (e) {
+                        throw e
+                    }
+                },
+                setValue
+            }
+            _registerForm(id, payload)
+        }
+    }, [errors]);
+
+    return (
+        <form onSubmit={handleSubmit(onSubmit)}
+              id={id}
+              className={`row ${config.gutter || "gy-3"}`}
+        >
+            {RenderController}
+        </form>
     )
 }
+
 export default React.memo(FormBuilder)
 

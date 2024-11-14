@@ -8,7 +8,6 @@ const Textarea = React.memo((props: any) => {
         placeholder
     } = props;
 
-    console.log("Render TEXTAREA -> ", field.name);
 
     return (
         <textarea
