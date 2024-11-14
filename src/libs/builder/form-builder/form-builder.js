@@ -87,6 +87,7 @@ const FormBuilder = (props) => {
         switch (item.type) {
             case "text":
             case "email":
+            case "number":
                 return <Fields.Input {...fieldProps}/>;
             case "textarea":
                 return <Fields.Textarea {...fieldProps}/>;
@@ -126,8 +127,14 @@ const FormBuilder = (props) => {
         return config?.fields?.map((item, index) => {
             const accessor = item.accessor || "";
 
+            if (!item.type && item.render) {
+                return <div key={index} className={`${item.col || config?.col || "col-md-6"}`}>
+                    {item.render()}
+                </div>
+            }
+
             return (
-                <div className={`${item.col || config?.col || "col-md-6"}`} key={index}>
+                <div className={`${item.col || config?.col || "col-md-6"} ${item?.isHorizontal ? "d-flex align-items-center" : ""}`} key={index}>
                     <Controller name={accessor}
                                 control={control}
                                 render={(controller) => {
@@ -137,13 +144,16 @@ const FormBuilder = (props) => {
 
                                     return (
                                         <>
-                                            {item.label &&
-                                                React.isValidElement(item.label) ?
-                                                    item.label :
-                                                <label className={"form-label"} htmlFor={controller.field.name}>
-                                                    {item.label}
-                                                </label>
+                                            {React.isValidElement(item.label) ? item.label
+                                                :
+                                                (item.label &&
+                                                    <label className={`form-label ${item?.isHorizontal ? "mb-0 me-2" : ""}`} htmlFor={controller.field.name}>
+                                                        {item.label}
+                                                    </label>
+                                                )
                                             }
+
+
 
 
                                             {RenderField(item, controller)}
