@@ -4,19 +4,20 @@ const Textarea = React.memo((props: any) => {
     const {
         field,
         errors,
-        resize,
-        placeholder
     } = props;
 
+    const {
+        resize,
+        placeholder
+    } = props.config
 
     return (
-        <textarea
-            {...field}
-            className={`form-control ${errors ? "is-invalid" : ""} ${resize ? "" : "resize-none"}`}
-            placeholder={placeholder || ""}
-            rows={5}
-            id={field.name}
-            value={field?.value || ""}
+        <textarea{...field}
+                 className={`form-control ${errors ? "is-invalid" : ""} ${resize ? "" : "resize-none"}`}
+                 placeholder={placeholder || ""}
+                 rows={5}
+                 id={field.name}
+                 value={field?.value || ""}
         ></textarea>
     );
 });
