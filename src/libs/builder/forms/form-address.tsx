@@ -94,7 +94,7 @@ const FormAddress = forwardRef<FormAddressHandles, FormAddressProps>((props, ref
             clearErrors()
         }
         try {
-            let res = await api.get(`search/cep/${cep}`, {}, {isClub:true})
+            let res = await api.get(`search/cep/${cep}`)
             const { object } = res
             let aux = {
                 [fieldNames.street_name]: capitalize(object?.street),
@@ -397,6 +397,7 @@ const FormAddress = forwardRef<FormAddressHandles, FormAddressProps>((props, ref
                 <button type="submit"
                         id={"submit_address"}
                         ref={submitButtonRef}
+                        disabled={isSubmitting}
                         className="btn btn-primary col-12 col-lg-4">
                     Salvar Endereço
                 </button>
