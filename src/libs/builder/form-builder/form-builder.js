@@ -138,14 +138,21 @@ const FormBuilder = (props) => {
                                     return (
                                         <>
                                             {item.label &&
+                                                React.isValidElement(item.label) ?
+                                                    item.label :
                                                 <label className={"form-label"} htmlFor={controller.field.name}>
                                                     {item.label}
                                                 </label>
                                             }
 
+
                                             {RenderField(item, controller)}
 
-                                            {isErrorField ? <p className={"text-danger"}>{isErrorField.message}</p> : null}
+                                            {isErrorField ? <p className={"text-danger"}>{isErrorField.message}</p> : (item?.helperInput &&
+                                                <small className={"form-text"}>
+                                                    {item.helperInput}
+                                                </small>)
+                                            }
                                         </>
                                     )
                                 }}
