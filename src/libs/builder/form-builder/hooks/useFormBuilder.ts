@@ -23,7 +23,7 @@ export interface UseFormBuilderReturn<T extends FieldValues = FieldValues> {
 }
 
 
-export const useFormBuilder = <T extends FieldValues>(id: string): UseFormBuilderReturn<T> | null => {
+export const useFormBuilder = <T extends FieldValues>(id: string): Partial<UseFormBuilderReturn<T>> | null => {
     const client = React.useContext(FormBuilderContext);
 
     if (!client) {
@@ -47,7 +47,7 @@ export const useFormBuilder = <T extends FieldValues>(id: string): UseFormBuilde
         }
     }, [_activeForm]);
 
-    if (!_activeForm) return null;
+    if (!_activeForm) return {};
 
     const {
         reset,

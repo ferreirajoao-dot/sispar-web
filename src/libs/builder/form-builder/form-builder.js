@@ -31,8 +31,31 @@ const FormBuilder = (props) => {
         resolver: config?.schema ? yupResolver(config.schema) : null,
         defaultValues: defaultValues,
     });
-
     const { _registerForm } = React.useContext(FormBuilderContext);
+
+    const _formBuilderReturn = React.useRef({
+        watch,
+        reset,
+        errors,
+        onValidateForm: async () => {
+            try {
+                let isValidForm = true;
+                const onError = () => {
+                    isValidForm = false;
+                }
+                await handleSubmit(onSubmit, onError)();
+
+                if (isValidForm) {
+                    return getValues()
+                } else {
+                    throw "Invalid Form"
+                }
+            } catch (e) {
+                throw e
+            }
+        },
+        setValue
+    })
 
     const onSubmit = React.useCallback(async (args) => {
         if (props?.onSubmit) {
@@ -51,7 +74,6 @@ const FormBuilder = (props) => {
             }
         }
     }, [])
-
 
     const RenderField = React.useCallback((item, controller) => {
         const { field } = controller;
@@ -98,8 +120,6 @@ const FormBuilder = (props) => {
         }
     },[]);
 
-
-
     const RenderController = React.useMemo(() => {
         console.log("RenderController")
 
@@ -137,33 +157,14 @@ const FormBuilder = (props) => {
     },[config])
 
     React.useEffect(() => {
-        if (id) {
-            let payload = {
-                watch,
-                reset,
-                errors,
-                onValidateForm: async () => {
-                    try {
-                        let isValidForm = true;
-                        const onError = () => {
-                            isValidForm = false;
-                        }
-                        await handleSubmit(onSubmit, onError)();
-
-                        if (isValidForm) {
-                            return getValues()
-                        } else {
-                            throw "Invalid Form"
-                        }
-                    } catch (e) {
-                        throw e
-                    }
-                },
-                setValue
-            }
-            _registerForm(id, payload)
+        if (Object.keys(errors).length > 0) {
+            _registerForm(id, _formBuilderReturn.current)
         }
     }, [errors]);
+
+    React.useEffect(() => {
+        _registerForm(id, _formBuilderReturn.current)
+    },[])
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}
