@@ -12,7 +12,6 @@ const MaskedInput = React.memo((props: any) => {
         placeholder,
     } = config;
 
-    console.log(`Render ${config.type.toUpperCase() || "text"} ->`, field.name);
 
     return (
         <NumberFormat value={field?.value || ""}

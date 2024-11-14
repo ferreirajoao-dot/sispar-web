@@ -1,5 +1,5 @@
 import {useContext} from "react";
-import {ContextUser} from "@/ui/layout/providers-component";
+import {ContextUser} from "@/components/layout/providers-component";
 
 export const useSession = () => {
     return {

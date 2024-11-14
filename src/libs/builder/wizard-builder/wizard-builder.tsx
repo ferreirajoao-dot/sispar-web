@@ -3,10 +3,28 @@
 import React, { useState } from "react";
 import {KTIcon} from "@/libs/KTIcon/KTIcon";
 
+interface StepData {
+    [key: string]: any; // Ou substitua por chaves específicas se souber o formato exato.
+}
+
+interface ElementProps {
+    total: number;
+    step: number;
+    data_step: Record<string, any>; // Dados do passo atual
+    data_all_steps: Record<string, any>; // Todos os dados de passos
+    actions: {
+        saveData: (data: StepData) => void; // Função para salvar os dados
+        next: () => void; // Próximo passo
+        previous: () => void; // Passo anterior
+        joinData: () => void; // Combinar os dados
+    };
+}
+
+
 interface MetaProps {
     title?: string;
     description?: string;
-    element: (props: any) => React.ReactNode;
+    element: (e: ElementProps) => React.ReactNode;
 }
 
 interface WizardBuilderProps {
@@ -63,50 +81,51 @@ export default function WizardBuilder(props: WizardBuilderProps) {
 
     return (
         <div className="stepper stepper-pills stepper-column d-flex flex-column flex-xl-row flex-row-fluid gap-10">
-            <div
-                className="card d-flex justify-content-center justify-content-xl-start flex-row-auto w-100 w-xl-300px w-xxl-400px">
-                <div>
-                    <div className="card-body py-10 mb-n5">
-                        <ul className="stepper-nav nav flex-nowrap flex-md-wrap flex-row flex-md-column overflow-x-auto scroll-none gap-5 gap-md-0 pb-5 pb-md-0">
-                            {meta.map((item, key) => {
-                                const lastPosition = meta.length - 1;
-                                const step = (key + 1)
+            <div>
+                <div style={{top:90}} className="card d-flex justify-content-center justify-content-xl-start position-sticky flex-row-auto w-100 w-xl-300px w-xxl-400px">
+                    <div>
+                        <div className="card-body py-10 mb-n5">
+                            <ul className="stepper-nav nav flex-nowrap flex-md-wrap flex-row flex-md-column overflow-x-auto scroll-none gap-5 gap-md-0 pb-5 pb-md-0">
+                                {meta.map((item, key) => {
+                                    const lastPosition = meta.length - 1;
+                                    const step = (key + 1)
 
-                                return (
-                                    <li key={key} className={"flex-column-fluid"} id={`step-${step}`}>
-                                        <div data-kt-stepper-element={"nav"}
-                                             className={`stepper-item ${verifyStep(key + 1)} flex-row flex-md-column align-items-center align-items-md-start justify-content-between gap-4 gap-md-0`}>
-                                            <div className="stepper-wrapper">
-                                                <button onClick={() => onChangeStep(null, step)}
-                                                    disabled={enableClickStep ? false : (activeStep < (step + 1))}
+                                    return (
+                                        <li key={key} className={"flex-column-fluid"} id={`step-${step}`}>
+                                            <div data-kt-stepper-element={"nav"}
+                                                 className={`stepper-item ${verifyStep(key + 1)} flex-row flex-md-column align-items-center align-items-md-start justify-content-between gap-4 gap-md-0`}>
+                                                <div className="stepper-wrapper">
+                                                    <button onClick={() => onChangeStep(null, step)}
+                                                            disabled={enableClickStep ? false : (activeStep < (step + 1))}
                                                         // disabled={true}
-                                                        className="stepper-icon w-40px h-40px"
-                                                >
-                                                    <i className="stepper-check ki-duotone ki-check fs-2"/>
-                                                    <span className="stepper-number">
+                                                            className="stepper-icon w-40px h-40px"
+                                                    >
+                                                        <i className="stepper-check ki-duotone ki-check fs-5"/>
+                                                        <span className="stepper-number">
                                                         {step}
                                                     </span>
-                                                </button>
-                                                <div className="stepper-label">
-                                                    <h3 className="stepper-title">
-                                                        {item.title}
-                                                    </h3>
-                                                    <div className="stepper-desc fw-semibold">
-                                                        {item.description}
+                                                    </button>
+                                                    <div className="stepper-label">
+                                                        <h3 className="stepper-title">
+                                                            {item.title}
+                                                        </h3>
+                                                        <div className="stepper-desc fw-semibold">
+                                                            {item.description}
+                                                        </div>
                                                     </div>
                                                 </div>
+                                                {(lastPosition !== key) &&
+                                                    <>
+                                                        <div className="stepper-line d-none d-md-block h-40px"/>
+                                                        <KTIcon name={"right"} className={"d-md-none"} type={"solid"}/>
+                                                    </>
+                                                }
                                             </div>
-                                            {(lastPosition !== key) &&
-                                                <>
-                                                    <div className="stepper-line d-none d-md-block h-40px"/>
-                                                    <KTIcon name={"right"} className={"d-md-none"} type={"solid"}/>
-                                                </>
-                                            }
-                                        </div>
-                                    </li>
-                                )
-                            })}
-                        </ul>
+                                        </li>
+                                    )
+                                })}
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -124,7 +143,7 @@ export default function WizardBuilder(props: WizardBuilderProps) {
                                 data_step: cachedData[step] || {},
                                 data_all_steps: cachedData,
                                 actions: {
-                                    saveData: (data: any) => onChangeData({[step]: data}),
+                                    saveData: (data) => onChangeData({[step]: data}),
                                     next: () => onChangeStep("next", activeStep + 1),
                                     previous: () => onChangeStep("previous", activeStep - 1),
                                     joinData: joinData

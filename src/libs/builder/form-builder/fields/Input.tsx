@@ -9,18 +9,23 @@ const Input = React.memo((props: any) => {
 
     const {
         placeholder,
+        type,
+        disabled,
+        maxLength,
+        addClassName,
+        isAllowNegative
     } = config;
 
-    console.log(`Render ${config.type.toUpperCase() || "text"} ->`, field.name);
 
     return <input {...field}
-                  className={`form-control ${errors ? "is-invalid" : ""}`}
+                  className={`form-control ${errors ? "is-invalid" : ""} ${addClassName || ""}`}
                   placeholder={placeholder || ""}
                   id={field.name}
                   value={field?.value || ""}
-                  type={config.type}
-                  disabled={config?.disabled}
-                  maxLength={config.maxLength}
+                  type={type}
+                  disabled={disabled}
+                  maxLength={maxLength}
+                  min={isAllowNegative ? null : 0}
     />
 });
 

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Layout from "@/ui/layout/default-layout";
+import Layout from "@/components/layout/default-layout";
 
 import "@/styles/globals.scss";
 

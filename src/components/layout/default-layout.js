@@ -1,9 +1,9 @@
 "use client"
 
 import React from "react";
-import Header from "@/ui/layout/header";
-import {Footer} from "@/ui/layout/footer";
-import Providers from "@/ui/layout/providers-component";
+import Header from "@/components/layout/header";
+import {Footer} from "@/components/layout/footer";
+import Providers from "@/components/layout/providers-component";
 
 
 export default function Layout({children}) {

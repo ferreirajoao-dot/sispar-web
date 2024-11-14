@@ -7,7 +7,7 @@ import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 import {useRouter} from "next/navigation";
 import api, { access } from "@/services/api";
 import FormBuilderProvider from "@/libs/builder/form-builder/form-builder-provider";
-import ToastProvider from "@/ui/providers/toast-container";
+import ToastProvider from "@/components/providers/toast-container";
 
 export const ContextApplication = createContext();
 export const ContextUser = createContext();

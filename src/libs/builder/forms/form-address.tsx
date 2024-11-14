@@ -21,17 +21,24 @@ export const fieldsFormAddress = {
 };
 
 interface FormAddressProps {
-    onSubmit: (data: any) => void;
+    onSubmit?: (data: any) => void;
     customNameFields?: Partial<typeof fieldsFormAddress>;
     defaultValue?:  Partial<typeof fieldsFormAddress>;
     hideSubmitButton?: boolean;
 }
 
+interface FormAddressHandles {
+    resetForm: () => void;
+    onSubmit: () => void;
+    onValidateForm: (isReturnValue?: boolean) => Promise<boolean | FormAddressData>;
+}
+
+
 interface FormAddressData {
     [key: string]: string;
 }
 
-const FormAddress = forwardRef((props: FormAddressProps, ref) => {
+const FormAddress = forwardRef<FormAddressHandles, FormAddressProps>((props, ref) => {
     // Customizar os nomes dos campos com base na prop `customNameFields` ou usar os padrões
     const fieldNames = {
         ...fieldsFormAddress,
@@ -67,14 +74,18 @@ const FormAddress = forwardRef((props: FormAddressProps, ref) => {
     const [isFetching, setIsFetching] = useState<boolean>(false);
     const submitButtonRef = useRef<HTMLButtonElement | null>(null);
 
-
-
-    const onSubmit: SubmitHandler<FormAddressData> = (data) => {
-        props.onSubmit(data);
+    const onSubmit: SubmitHandler<FormAddressData> = async (data) => {
+        try {
+            if (props.onSubmit) {
+                props.onSubmit(data);
+            }
+        } catch (e) {
+            // throw e
+        }
     };
 
-    const onError = (e: any) => {
-        console.log(e)
+    const onError = (error: any) => {
+        throw error
     }
 
     const checkCEP = async (cep: string | any) => {
@@ -83,7 +94,7 @@ const FormAddress = forwardRef((props: FormAddressProps, ref) => {
             clearErrors()
         }
         try {
-            let res = await api.get(`search/cep/${cep}`, {}, {isClub:true})
+            let res = await api.get(`search/cep/${cep}`)
             const { object } = res
             let aux = {
                 [fieldNames.street_name]: capitalize(object?.street),
@@ -141,7 +152,25 @@ const FormAddress = forwardRef((props: FormAddressProps, ref) => {
             if (submitButtonRef.current) {
                 submitButtonRef.current.click()
             }
-        }
+        },
+        watch: watch(),
+        onValidateForm: async (isReturnValue = false) => {
+            try {
+                let isValidForm = true;
+                const onError = () => {
+                    isValidForm = false;
+                }
+                await handleSubmit(onSubmit, onError)();
+
+                if (isValidForm) {
+                    return isReturnValue ?  watch() : isValidForm
+                } else {
+                    return isValidForm
+                }
+            } catch (e) {
+                throw e
+            }
+        },
     }));
 
     return (
@@ -231,6 +260,7 @@ const FormAddress = forwardRef((props: FormAddressProps, ref) => {
                                            id={name}
                                            type="number"
                                            name={name}
+                                           min={0}
                                            placeholder="Número"
                                            className={`form-control ${isInvalid ? "is-invalid" : ""}`}
                                     />
@@ -367,6 +397,7 @@ const FormAddress = forwardRef((props: FormAddressProps, ref) => {
                 <button type="submit"
                         id={"submit_address"}
                         ref={submitButtonRef}
+                        disabled={isSubmitting}
                         className="btn btn-primary col-12 col-lg-4">
                     Salvar Endereço
                 </button>

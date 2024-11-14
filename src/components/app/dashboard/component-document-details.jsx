@@ -1,11 +1,11 @@
-import ComponentSelectFile from "@/ui/components/component-select-file";
 import { AnimatePresence, motion } from "framer-motion";
 import React, {useState} from "react";
 import api from "@/services/api";
 import {useMutation} from "@tanstack/react-query";
+import ComponentSelectFile from "@/components/ui/component-select-file";
 
 export default function ComponentDocumentDetails(props) {
-    const { data, colorBadge, refetch } = props;
+    const { data, color, refetch, activeStatus, isValidationStarted } = props;
     const identifier = data?.identifier;
 
     const [files, setFiles] = useState({});
@@ -62,18 +62,26 @@ export default function ComponentDocumentDetails(props) {
                     variants={fadeIn}
                     layout
                 >
-                    <div className={`card border-${colorBadge} card-bordered`}>
-                        <div className={`card-header bg-${colorBadge}-subtle border-${colorBadge}`}>
-                            <div className={`card-title text-${colorBadge}-emphasis`}>
+                    <div className={`card border-${color} card-bordered mb-10`}>
+                        <div className={`card-header bg-${color}-subtle border-${color}`}>
+                            <div className={`card-title text-${color}-emphasis`}>
                                 {data?.document_type?.title}
                             </div>
                         </div>
                         <div className={"card-body"}>
                             <p className={"text-justify mb-0"}>{data?.document_type?.description}</p>
                         </div>
+                        {activeStatus === "RETURNED" &&
+
+                            <div className="card-footer">
+                                <p className={"mb-0 text-end"}>
+                                    <strong className={"text-danger"}>Motivo:</strong> {data?.status_note}
+                                </p>
+                            </div>
+                        }
                     </div>
 
-                    <div className={"mt-10"}>
+                    <div>
                         <ComponentSelectFile
                             onAttachments={(attachment) => onAttachments(attachment)}
                             maxFiles={1}
@@ -88,6 +96,7 @@ export default function ComponentDocumentDetails(props) {
                                     file: data.full_file_path
                                 } : null
                             }
+                            disableRemoveFiles={(isValidationStarted) || activeStatus === "APPROVED"}
                         />
                     </div>
                     {files[identifier] && (

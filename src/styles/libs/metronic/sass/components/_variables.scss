@@ -370,9 +370,9 @@ $gutters: (
 $font-family-sans-serif: Inter, Helvetica, "sans-serif" !default;
 
 $font-size-base: 1rem !default; // Assumes the browser default, typically `13px`
-$font-size-lg: $font-size-base * 1.075 !default;   // 14.04px
-$font-size-xl: $font-size-base * 1.21 !default;   // 16.04px
-$font-size-sm: $font-size-base * .95 !default;   // 12.025px
+$font-size-lg: $font-size-base * 1.065 !default;   // 14.04px
+$font-size-xl: $font-size-base * 1.15 !default;   // 16.04px
+$font-size-sm: $font-size-base * .85 !default;   // 12.025px
 
 $font-weight-lighter: lighter !default;
 $font-weight-light: 300 !default;
