@@ -37,7 +37,7 @@ const FormBuilder = (props) => {
         watch,
         reset,
         errors,
-        onValidateForm: async () => {
+        onValidateForm: async (isReturnValue = false) => {
             try {
                 let isValidForm = true;
                 const onError = () => {
@@ -46,9 +46,9 @@ const FormBuilder = (props) => {
                 await handleSubmit(onSubmit, onError)();
 
                 if (isValidForm) {
-                    return getValues()
+                    return isReturnValue ?  getValues() : isValidForm
                 } else {
-                    throw "Invalid Form"
+                    return isValidForm
                 }
             } catch (e) {
                 throw e

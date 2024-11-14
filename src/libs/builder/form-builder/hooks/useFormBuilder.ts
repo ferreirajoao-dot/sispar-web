@@ -18,7 +18,7 @@ export interface UseFormBuilderReturn<T extends FieldValues = FieldValues> {
     watch: any;
     reset: UseFormReset<T>;
     errors: FieldErrorsImpl<T>;
-    onValidateForm: () => Promise<T>;
+    onValidateForm: (isReturnValue?: boolean) => Promise<T>;
     setValue: UseFormSetValue<T>;
 }
 
