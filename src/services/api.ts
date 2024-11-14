@@ -2,8 +2,6 @@ import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { toast, ToastOptions } from "react-toastify";
 
 interface Config {
-    isClub?: boolean;
-    isCrafty?: boolean;
     isNext?: boolean;
     disableToast?: boolean;
     token?: string | null;
@@ -17,20 +15,20 @@ export let access: AccessProps = {
 };
 
 const genericCall = async (url: string, method: string, data: any, params?: object | null, config: Config = {}) => {
-    const { isClub = false, disableToast = false, isCrafty, isNext } = config;
+    const {
+        disableToast = false,
+        isNext
+    } = config;
 
     let headers: object
     let baseUrl: string | undefined
 
-    if (isClub) {
-        headers = {...JSON.parse(`${process.env.NEXT_PUBLIC_HEADER_CLUB}`)}
-        baseUrl = process.env.NEXT_PUBLIC_BASE_URL_API_CLUB
-    } else if (isNext) {
+    if (isNext) {
         headers = {...JSON.parse(`${process.env.NEXT_PUBLIC_HEADER_NEXT}`)}
 
     } else {
         headers = {...JSON.parse(`${ process.env.NEXT_PUBLIC_HEADER_CRAFTY}`)}
-        baseUrl = process.env.NEXT_PUBLIC_BASE_URL_API_CRAFTY
+        baseUrl = process.env.NEXT_PUBLIC_BASE_URL_API_MAIN
     }
 
     let payload: any = {
@@ -42,8 +40,8 @@ const genericCall = async (url: string, method: string, data: any, params?: obje
         params
     }
 
-    if(access.api_token && isClub) payload.headers.userToken = access.api_token || config.token;
-    if(access.api_token && !isClub && !isNext) payload.headers[`X-Api-Key`] = access.api_token;
+    if(access.api_token) payload.headers.userToken = access.api_token || config.token;
+    if(access.api_token && !isNext) payload.headers[`X-Api-Key`] = access.api_token;
 
     if (config.token) {
         payload.headers.userToken = config.token
@@ -105,12 +103,7 @@ const fetchData = async (params: AxiosRequestConfig, disableToast: boolean, conf
                     return handleError(error?.response?.data?.message)
                 }
             } else if (error?.response?.data?.message) {
-                if (config.isCrafty) {
-                    handleError(error?.response?.data?.message, true)
-                    throw error.response.data
-                } else {
-                    return handleError(error?.response?.data?.message)
-                }
+                return handleError(error?.response?.data?.message)
             } else {
                 return handleError('Ops, ocorreu um erro!')
             }
