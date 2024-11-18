@@ -16,12 +16,16 @@ export default function Layout({children}) {
         <Providers>
             <div className={'d-flex flex-column flex-root app-root'}>
                 <div className="app-page  flex-column flex-column-fluid ">
-                    {isHiddenHeader ? null : <Header/>}
+                    <div className={isHiddenHeader ? "d-none" : "d-block"}>
+                        <Header/>
+                    </div>
                     <main className={"app-wrapper flex-column flex-row-fluid position-relative"}>
                         {children}
                     </main>
                 </div>
-                {isHiddenFooter ? null :  <Footer/>}
+                <div className={isHiddenFooter ? "d-none" : "d-block"}>
+                    <Footer/>
+                </div>
             </div>
         </Providers>
     )
