@@ -66,7 +66,7 @@ export default function LoginPage() {
                         <div className="text-gray-500 text-center fw-semibold fs-6">
                             <span> Não é membro?</span>{" "}
                             <Link
-                                href={"#"}
+                                href={"/registro"}
                                 className="link-primary"
                             >
                                 Cadastre-se
