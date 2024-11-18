@@ -79,6 +79,7 @@ const FormBuilder = (props) => {
         const { field } = controller;
         const errors = controller.fieldState.error;
 
+        // console.log("rendered ->", field.name)
         const fieldProps = {
             config: item,
             field,
@@ -88,6 +89,7 @@ const FormBuilder = (props) => {
             case "text":
             case "email":
             case "number":
+            case "password":
                 return <Fields.Input {...fieldProps}/>;
             case "textarea":
                 return <Fields.Textarea {...fieldProps}/>;
@@ -186,7 +188,7 @@ const FormBuilder = (props) => {
     return (
         <form onSubmit={handleSubmit(onSubmit)}
               id={id}
-              className={`row ${config.gutter || "gy-3"}`}
+              className={`row ${config.formClassName || "gy-3"}`}
         >
             {RenderController}
         </form>
