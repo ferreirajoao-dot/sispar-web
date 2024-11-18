@@ -43,7 +43,7 @@ const Header = () => {
 
     useEffect(() => {
 
-        if (pathname === "/") {
+        if (["/", "/login"].some((item) => item === pathname)) {
             onChangeHtmlHeaderSticky("off");
             onChangeSticky('remove');
         } else {
@@ -59,12 +59,12 @@ const Header = () => {
                     <div className="row align-items-center justify-content-between py-4">
                         <div className="col-xxl-3 col-xl-3 col-lg-3 col-md-4 col-6">
                             <div className="sasup-logo mr-35 d-inline-block">
-                                <Link href="/" className="logo-1">
+                                <Link href="/" className="logo- 1">
                                     <Image src={logo} className={'h-auto mw-200px'} alt="image not found"/>
                                 </Link>
-                                <Link href="/" className="logo-2">
-                                    <Image src={logo} className={'h-auto'} alt="image not found"/>
-                                </Link>
+                                {/*<Link href="/" className="logo-2">*/}
+                                {/*    <Image src={logo} className={'h-auto'} alt="image not found"/>*/}
+                                {/*</Link>*/}
                             </div>
                         </div>
                         {/*<div className="col-xxl-6 col-xl-6 col-lg-6 d-none d-lg-block text-center">*/}
@@ -105,7 +105,7 @@ const Header = () => {
                         {/*</div>*/}
                         <div className="col-xxl-3 col-xl-3 col-lg-3 col-md-8 col-6">
                             <div className="sasup-header-action-5 text-end">
-                                <Link href="#" className={pathname === "/" ? "sasup-login-btn-5" : "sasup-transparent-btn"}>
+                                <Link href="/login" className={pathname === "/" ? "sasup-login-btn-5" : "sasup-transparent-btn"}>
                                     <i className="fal fa-user"/> Login
                                 </Link>
                                 <Link href={"/registro"} className="sasup-header-white-btn-5 header-btn"
