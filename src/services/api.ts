@@ -5,6 +5,7 @@ interface Config {
     isNext?: boolean;
     disableToast?: boolean;
     token?: string | null;
+    isClub?: boolean;
 }
 
 interface AccessProps {
@@ -39,13 +40,13 @@ const genericCall = async (url: string, method: string, data: any, params?: obje
         method,
         params
     }
+    payload.headers.userToken = '8400ebda9675ec0e9b00b8a419a583ad591fc82e'
 
-    if(access.api_token) payload.headers.userToken = access.api_token || config.token;
-    if(access.api_token && !isNext) payload.headers[`X-Api-Key`] = access.api_token;
-
-    if (config.token) {
-        payload.headers.userToken = config.token
-    }
+    // if(access.api_token) payload.headers.userToken = access.api_token || config.token;
+    // if(access.api_token && !isNext) payload.headers[`X-Api-Key`] = access.api_token;
+    //
+    // if (config.token) {
+    // }
     return fetchData(payload, (!disableToast ? (method === "GET" ? false : disableToast) : disableToast), config);
 }
 

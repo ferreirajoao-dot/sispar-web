@@ -105,7 +105,7 @@ export default function ComponentDocuments(props) {
     const statusDocumentToDisplay = () => {
         if (statusProcess?.isDraft) {
             return [PENDING_UPLOAD, WAITING_VALIDATION];
-        } else if (statusProcess?.isReturned || statusProcess?.isWaitingValidation || statusProcess.isValidating) {
+        } else if (statusProcess?.isReturned || statusProcess?.isWaitingValidation || statusProcess?.isValidating) {
             return [WAITING_VALIDATION, APPROVED, RETURNED];
         }
         return [];
@@ -144,7 +144,7 @@ export default function ComponentDocuments(props) {
             const filtered = filterResponseFn(response.object);
             const { statusProcess, countStatus, sortedByStatus } = filtered;
 
-            const isReturned = statusProcess.isReturned;
+            const isReturned = statusProcess?.isReturned;
             const returnedCount = countStatus[RETURNED];
             const waitingValidation = sortedByStatus[WAITING_VALIDATION];
             const returnedStatus = sortedByStatus[RETURNED];
@@ -215,7 +215,7 @@ export default function ComponentDocuments(props) {
                             return null;
                         }
 
-                        if (!statusProcess?.isDraft && item.value === WAITING_VALIDATION && !statusProcess.isReturned) {
+                        if (!statusProcess?.isDraft && item.value === WAITING_VALIDATION && !statusProcess?.isReturned) {
                             statusDocument[item.value].label = "Aguardando validação"
                         }
 
@@ -241,7 +241,7 @@ export default function ComponentDocuments(props) {
                 </div>
 
                 <div>
-                    {((statusProcess?.isDraft || statusProcess.isReturned) && status === WAITING_VALIDATION) &&
+                    {((statusProcess?.isDraft || statusProcess?.isReturned) && status === WAITING_VALIDATION) &&
                         <button className={"btn btn-success btn-sm"}
                                 onClick={mutate}
                                 disabled={countStatus[PENDING_UPLOAD] !== 0 || isPending}>
@@ -280,7 +280,7 @@ export default function ComponentDocuments(props) {
                                               color={statusDocument[status].color}
                                               refetch={refetch}
                                               activeStatus={status}
-                                              isValidationStarted={statusProcess?.isWaitingValidation || statusProcess.isValidating}
+                                              isValidationStarted={statusProcess?.isWaitingValidation || statusProcess?.isValidating}
                     />
                 </div>
             </div>
