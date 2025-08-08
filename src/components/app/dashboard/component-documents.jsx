@@ -172,7 +172,6 @@ export default function ComponentDocuments(props) {
 
             return filtered
         },
-        serverData: props.serverData.entityFlowProcess,
         keepOriginalResponse: true,
         enabled: !!identifier,
     });
