@@ -137,7 +137,7 @@ export default function ComponentDocuments(props) {
         serverData: props.serverData.entityFlowProcessIdentifier,
     });
 
-    const { data, refetch } = useGetData({
+    const { data, refetch,isLoading } = useGetData({
         queryKey: ["/restrict/entity-flow", identifier],
         url: `/restrict/entity-flow/${identifier}`,
         onSuccess: (response) => {
@@ -184,6 +184,9 @@ export default function ComponentDocuments(props) {
     const { custom_data } = data ?? {}
     const { sortedByStatus, countStatus, statusProcess } = custom_data ?? {}
 
+    if (!data) {
+        return <div>Carregando processo...</div>
+    }
     if (statusProcess?.isApproved || props.serverData.isApproved) {
         return (
             <div>
